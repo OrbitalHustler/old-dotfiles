@@ -1,0 +1,20 @@
+#+TITLE: README
+* Installing this configuration
+#+begin_src bash
+chezmoi init https://github.com/Percee/dotfiles.git -S ~/.dotfiles
+#+end_src
+* Scripts
+| *Command* | *Description* |
+|-----------+---------------|
+| make      | stuff         |
+* Podman
+Exit a container by typing exit or Ctrl-D
+#+begin_src bash
+podman build -t deb11 -f dockerfiles/Dockerfile.Debian11 .
+podman run --name deb11 -ti deb11 bash
+podman run --name comp --privileged=true -ti -v ~/workspace/emacs-src:/home/archie/workspace deb11-comp bash
+# Enter the stopped container
+podman start -ia deb11
+podman kill deb11
+podman rm deb11
+#+end_src

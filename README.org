@@ -1,7 +1,7 @@
 #+TITLE: README
 * Installing this configuration
 #+begin_src bash
-chezmoi init https://github.com/Percee/dotfiles.git -S ~/.dotfiles
+BINDIR="$HOME/.local/bin" sh -c "$(curl -fsLS git.io/chezmoi)" -- init --apply Percee
 #+end_src
 * Scripts
 | *Command* | *Description* |

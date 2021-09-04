@@ -7,7 +7,7 @@ DIR=$(dirname "$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)")
 
 if [[ "$DISTRIB_ID" == "Debian" ]]; then
     if [[ "$DISTRIB_RELEASE" ==  "11" ]]; then
-        APT_BUNDLE_FILE="$DIR/package-lists/Debian11.packages"
+        APT_BUNDLE_FILE="$DIR/package-lists/deb11.packages"
         ansi --green "Using $APT_BUNDLE_FILE bundle file"
         sudo -v
         sudo apt-get update &&\

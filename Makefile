@@ -6,7 +6,7 @@ help:
 	@echo
 	@echo 'Usage:'
 	@echo '    make start-services     Starts services (systemd...).'
-	@echo '    make git-repos          Clone Git repos.'
+	@echo '    make install-env        Install environment.'
 	@echo '    make conf-sys           Configure system files.'
 	@echo '    make ssh-perms          Set SSH permissions.'
 	@echo '    make gnupg-perms        Set GnuPG permissions.'
@@ -29,9 +29,9 @@ start-services:
 	@echo "Starting services.."
 	bash ./scripts/start_services.sh | tee -a $(LOGFILE)
 
-git-repos:
-	@echo "Cloning Git repos.."
-	bash ./scripts/install_git_repos.sh | tee -a $(LOGFILE)
+install-env:
+	@echo "Installing env..."
+	bash ./scripts/install_env.sh | tee -a $(LOGFILE)
 
 conf-sys:
 	@echo "Configuring system.."
@@ -73,7 +73,7 @@ chezmoi-apply:
 all:
 	$(MAKE) ensure-deps
 	$(MAKE) start-services
-	$(MAKE) git-repos
+	$(MAKE) install-env
 	$(MAKE) conf-sys
 	$(MAKE) ssh-perms
 	$(MAKE) gnupg-perms

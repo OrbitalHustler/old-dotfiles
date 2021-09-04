@@ -18,7 +18,6 @@ ripgrep
 shellcheck
 source-highlight
 ssh
-svn
 texinfo
 tmux
 vim

@@ -23,6 +23,7 @@ if [ ! -d "$VIM_SENSIBLE_DIR" ]; then
     ( cd ~/.vim/pack/tpope/start && git clone https://tpope.io/vim/sensible.git )
 fi
 
+# TODO: what is this for?
 BASE16_PATH="$HOME/.config/base16-shell"
 if [ ! -d "$BASE16_PATH" ]; then
     mkdir -p "$BASE16_PATH"
@@ -34,17 +35,23 @@ if [ ! -f "$EMACS_PATH/bin/doom" ]; then
     mkdir -p "$EMACS_PATH"
     git clone --depth 1 https://github.com/hlissner/doom-emacs "$EMACS_PATH"
     # "$EMACS_PATH/bin/doom" -y install
-else
-    # "$EMACS_PATH/bin/doom" -y sync -e
+# else
+# "$EMACS_PATH/bin/doom" -y sync -e
 fi
 
-ASDF_DIR="$HOME/.local/asdf"
+ASDF_DIR=$HOME/.local/asdf
 if [ ! -d "$ASDF_DIR" ]; then
     git clone https://github.com/asdf-vm/asdf.git $ASDF_DIR --branch v0.8.1
-    # TODO I have it in my path currently (the old directory) but I don't know from where!! source $ASDF_DIR/asdf.sh
-    asdf plugin-add direnv
+    . ~/.local/asdf/asdf.sh
+    asdf plugin add direnv
     asdf install direnv latest
     asdf global direnv latest
+    asdf plugin add bat
+    asdf install bat latest
+    asdf global bat latest
+    asdf plugin add bitwarden
+    asdf install bitwarden v1.18.0
+    asdf global bitwarden v1.18.0
 fi
 
 NOTES_PATH="$HOME/.local/bin/notes"

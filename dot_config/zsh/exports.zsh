@@ -10,8 +10,9 @@ fpath=("$HOME/.config/zsh/completions" $fpath)
 
 export PROJECT_HOME="$HOME/workspace"
 export WORKSPACE="$PROJECT_HOME"
-export EDITOR="emacsclient --tty -a="
-export VISUAL="$HOME/.bin/editor"
+export EDITOR="emacsclient --tty -s tty -a="
+#export VISUAL="$HOME/.bin/editor"
+export VISUAL="$EDITOR"
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 

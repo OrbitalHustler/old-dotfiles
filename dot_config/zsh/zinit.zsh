@@ -52,6 +52,7 @@ zinit load mdumitru/fancy-ctrl-z
 zinit load rutchkiwi/copyzshell
 zinit load wfxr/forgit
 zinit load jeffreytse/zsh-vi-mode
+zinit load redxtech/zsh-show-path
 # zinit load kutsan/zsh-system-clipboard
 zinit load zsh-users/zsh-completions
 

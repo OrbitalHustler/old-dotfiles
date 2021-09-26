@@ -54,10 +54,10 @@ if [ ! -d "$ASDF_DIR" ]; then
     asdf global bitwarden v1.18.0
 fi
 
-NOTES_PATH="$HOME/.local/bin/notes"
-if [ ! -f "$NOTES_PATH" ]; then
-    curl -L https://raw.githubusercontent.com/pimterry/notes/latest-release/install.sh | PREFIX=$HOME/.local bash
-fi
+# NOTES_PATH="$HOME/.local/bin/notes"
+# if [ ! -f "$NOTES_PATH" ]; then
+#     curl -L https://raw.githubusercontent.com/pimterry/notes/latest-release/install.sh | PREFIX=$HOME/.local bash
+# fi
 
 FZF_DIR="$HOME/.local/fzf"
 FZF_PATH="$FZF_DIR/bin/fzf"
@@ -77,3 +77,8 @@ if [ ! -f "$LS_COLORS_PATH" ]; then
         | tar xzf - --directory=/tmp/LS_COLORS --strip=1
 ( cd /tmp/LS_COLORS && sh install.sh )
 fi
+
+if [ ! -f "$CARGO_HOME/bin/cargo" ]; then
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
+fi
+

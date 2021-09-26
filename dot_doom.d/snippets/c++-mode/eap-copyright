@@ -1,0 +1,27 @@
+# -*- mode: snippet -*-
+# contributor: MERINO Mathieu
+# name: eap-copyright
+# key: eap-copyright
+# --
+/* Copyright (C) Airbus Helicopters - All Rights Reserved
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * @file $1
+ * Written by @author Mathieu Merino <mathieu.merino.external@airbus.com>, @date
+ * `(format-time-string "%d/%m/%Y")`
+ *
+ * @brief $2
+ *
+ * You should have received a copy of the EasiPlayer license with
+ * this file. If not, please write to: fabien.perratone@airbus.com
+ *
+ * NOTICE:  All information contained herein is, and remains
+ * the property of Airbus Helicopters and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to Airbus Helicopters and its suppliers and
+ * may be covered by French and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from Airbus Helicopters.
+ */

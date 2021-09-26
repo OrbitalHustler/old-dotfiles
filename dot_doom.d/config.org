@@ -1,0 +1,466 @@
+* Misc
+#+begin_src emacs-lisp
+(setq! display-line-numbers-type 'relative)
+;; (+global-word-wrap-mode +1)
+(visual-line-mode)
+
+(setq-default custom-file (expand-file-name "custom.el" doom-private-dir))
+(add-to-list 'Info-default-directory-list "c:/emacs/emacs-28.0.50/share/info/")
+(add-to-list 'Info-directory-list "c:/emacs/emacs-28.0.50/share/info/")
+(when (file-exists-p custom-file)
+  (load custom-file))
+
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+(setq enable-local-variables t)
+;;(setq nxml-slash-auto-complete-flag t)
+#+end_src
+
+* Theme
+#+begin_src emacs-lisp
+(use-package! doom-themes
+  :init
+  (if (or (window-system)
+          (eq t (and (stringp (daemonp))
+                     (compare-strings (daemonp) nil nil "x" nil nil))))
+      (setq doom-theme 'tsdh-dark)
+    (setq doom-theme 'doom-monokai-classic)))
+#+end_src
+* WSL
+#+begin_src emacs-lisp
+(when (and (eq system-type 'gnu/linux)
+           (string-match
+            "Linux.*Microsoft.*Linux"
+            (shell-command-to-string "uname -a")))
+  (setq
+   browse-url-generic-program  "/mnt/c/Windows/System32/cmd.exe"
+   browse-url-generic-args     '("/c" "start")
+   browse-url-browser-function #'browse-url-generic)
+  (after! xclip
+    (xclip-mode)))
+#+end_src
+* GCMH (garbage collector)
+#+begin_src emacs-lisp
+;;(after! gcmh
+;;  (setq gcmh-high-cons-threshold 1024 * 1024 * 128))
+#+end_src
+
+* Bug fixes
+#+begin_src emacs-lisp
+(setq company-tooltip-idle-delay 0.1
+      company-idle-delay 0.1)
+(setq-default left-fringe-width 10)
+#+end_src
+
+#+begin_src
+(defadvice! fix-company-has-completion-p (&rest _)
+  :override #'+company-has-completion-p
+  t)
+#+end_src
+* Company
+TODO Delete once in doom
+Add icons to company without company-box.
+#+begin_src emacs-lisp
+(add-hook! lsp-mode ((lambda ()
+                       (when (display-graphic-p) (setq-local company-format-margin-function
+                                                             #'company-vscode-dark-icons-margin )))))
+(use-package! company
+  :custom
+  (company-icon-size 20))
+
+;; (add-hook 'lsp-mode-hook
+;;           (lambda ()
+;;             (setq-local company-format-margin-function
+;;                         #'company-vscode-dark-icons-margin-function)))
+#+end_src
+* Rebinds FR
+#+begin_src
+(map! (:when (featurep! :ui popup)
+       "C-é"   #'+popup/toggle
+       "C-è"   #'+popup/raise
+       "C-x p" #'+popup/other))
+(map! :leader
+      (:when (featurep! :ui popup)
+       :desc "Toggle last popup" "é" #'+popup/toggle
+       :desc "Switch to last buffer" "è" #'evil-switch-to-windows-last-buffer ))
+
+(map! :leader
+      :desc "window" "z" evil-window-map
+      (:when (featurep! :ui workspaces)
+       (:prefix-map ("TAB" . "workspace")
+        :desc "Switch to 1st workspace"  "&"   #'+workspace/switch-to-0
+        :desc "Switch to 2nd workspace"  "é"   #'+workspace/switch-to-1
+        :desc "Switch to 3rd workspace"  "\""  #'+workspace/switch-to-2
+        :desc "Switch to 4th workspace"  "'"   #'+workspace/switch-to-3
+        :desc "Switch to 5th workspace"  "("   #'+workspace/switch-to-4
+        :desc "Switch to 6th workspace"  "-"   #'+workspace/switch-to-5
+        :desc "Switch to 7th workspace"  "è"   #'+workspace/switch-to-6
+        :desc "Switch to 8th workspace"  "_"   #'+workspace/switch-to-7
+        :desc "Switch to 9th workspace"  "ç"   #'+workspace/switch-to-8
+        :desc "Switch to final workspace" "à"  #'+workspace/switch-to-final)))
+
+(map! :n "ù" #'evil-goto-mark )
+(map! :n "à" #'evil-execute-macro )
+#+end_src
+* Additional binds
+#+begin_src emacs-lisp
+(map! :leader
+      (:when (featurep! :ui workspaces)
+       (:prefix-map ("TAB" . "workspace")
+        :desc "Switch to last workspace" "SPC" #'+workspace/other )))
+(map! (:after evil-easymotion
+       :n "g SPC" #'evil-avy-goto-char-timer ))
+
+#+end_src
+* Monky
+Finish later: [[https://ananthakumaran.in/monky/index.html][documentation]]
+#+begin_src emacs-lisp
+(map! :leader "g h" #'monky-status)
+(map! :map (monky-mode-map)
+      :ivn [tab] #'monky-toggle-section)
+(use-package! monky
+  :commands monky-status)
+#+end_src
+* Fonts
+#+begin_src emacs-lisp
+(setq doom-font (font-spec :family "Cascadia Code" :height 120)
+      doom-variable-pitch-font (font-spec :family "Lucida Sans Unicode" :height 130))
+ ;;     doom-unicode-font (font-spec :family "DejaVu Sans Mono"))
+#+end_src
+* Hydra
+#+begin_src emacs-lisp
+(after! hydra)
+#+end_src
+* Org
+** main
+#+begin_src emacs-lisp
+(use-package! org
+  ;;:hook
+  ;;(org-capture-prepare-finalize . org-id-get-create)
+  :custom
+  (org-src-tab-acts-natively t))
+  ;; (org-id-link-to-org-use-id t))
+#+end_src
+** mixed-pitch
+#+begin_src emacs-lisp
+(use-package! mixed-pitch
+    :hook (org-mode . mixed-pitch-mode))
+#+end_src
+** babel
+#+begin_src emacs-lisp
+(after! org
+  (org-babel-do-load-languages
+   'org-babel-load-languages '((C . t))))
+#+end_src
+** beautify
+#+begin_src
+(setq org-hide-emphasis-markers t)
+
+(use-package! org-bullets
+    :hook (org-mode . org-bullets-mode))
+
+(add-hook! org-mode ((lambda ()
+                             "Beautify Org Checkbox Symbol"
+                             (push '("#+BEGIN_SRC" . "λ" ) prettify-symbols-alist)
+                             (push '("#+begin_src" . "λ" ) prettify-symbols-alist)
+                             (push '("#+END_SRC"   . "λ" ) prettify-symbols-alist)
+                             (push '("#+end_src"   . "λ" ) prettify-symbols-alist)
+                             (prettify-symbols-mode))))
+(setq prettify-symbols-unprettify-at-point 'right-edge)
+#+end_src
+** journal
+#+begin_src emacs-lisp
+(setq org-journal-date-prefix "#+TITLE: "
+      org-journal-time-prefix "* "
+      org-journal-date-format "%a, %d-%m-%Y"
+      org-journal-file-format "%d-%m-%Y.org")
+#+end_src
+** roam
+*** v1
+#+begin_src
+(use-package! org-roam
+  :custom
+  (org-roam-directory (expand-file-name "~/org/roam/"))
+  (org-roam-db-update-method 'immediate))
+
+(after! org-roam
+  (setq +org-roam-open-buffer-on-find-file nil))
+
+;; This is for org-roam v2 branch
+;; (map! :leader
+;;       (:when (featurep! :lang org +roam)
+;;        (:prefix-map ("n" . "notes")
+;;         (:prefix ("r" . "roam")
+;;          :desc "Find node" "f" #'org-roam-node-find ))))
+
+#+end_src
+*** v2
+[[https://github.com/org-roam/org-roam/wiki/Hitchhiker's-Rough-Guide-to-Org-roam-V2][Hitchiker's rough guide to org roam V2]]
+[[https://org-roam.discourse.group/t/the-org-roam-v2-great-migration/1505/9][The org roam V2 great migration]]
+#+begin_src
+(use-package! org-roam
+  :after org
+  :commands
+  (org-roam-buffer
+   org-roam-setup
+   org-roam-capture
+   org-roam-node-find)
+  :custom
+  (org-roam-directory (expand-file-name "~/org/roam/"))
+  (org-roam-db-location (concat doom-etc-dir "org-roam.db"))
+  :config
+  (add-to-list 'org-roam-mode-section-functions #'org-roam-unlinked-references-section )
+  :init
+  (map! :leader
+        :prefix ("r" . "roam")
+        :desc "Roam buffer" "b" #'org-roam-buffer
+        :desc "Add tag" "t" #'org-roam-tag-add
+        :desc "Remove tag" "T" #'org-roam-tag-remove
+        :desc "Add alias" "a" #'org-roam-alias-add
+        :desc "Remove alias" "A" #'org-roam-alias-remove
+        :desc "Add ref" "q" #'org-roam-ref-add
+        :desc "Remove ref" "Q" #'org-roam-ref-remove
+        :desc "Capture" "c" #'org-roam-capture
+        :desc "Find node" "r" #'org-roam-node-find
+        :desc "Refile" "R" #'org-roam-refile
+        :desc "Graph" "g" #'org-roam-graph
+        :desc "DB Sync" "S" #'org-roam-db-sync
+        ))
+;; (setq org-roam-mode-sections
+;;      (list #'org-roam-backlinks-insert-section
+;;            #'org-roam-reflinks-insert-section
+;;            #'org-roam-unlinked-references-insert-section)))
+
+;; (put 'org-roam-directory 'safe-local-variable)
+;; (put 'org-roam-db-location 'safe-local-variable)
+#+end_src
+
+*** v2 + +roam2
+#+begin_src emacs-lisp
+(after! org-roam
+  (setq +org-roam-open-buffer-on-find-file nil))
+
+#+end_src
+** deft
+#+begin_src emacs-lisp
+(use-package! deft
+  :custom
+  (deft-recursive t)
+  (deft-use-filename-as-title nil)
+  (deft-use-filter-string-for-filename t)
+  (deft-extensions '("md" "txt" "org"))
+  (deft-default-extension "org")
+  (deft-directory (expand-file-name "~/org/"))
+  (deft-new-file-format "%d-%m-%YT%H%M"))
+#+end_src
+
+This is a workaround for[[https://github.com/hlissner/doom-emacs/issues/2991][ this]] issue
+#+begin_src emacs-lisp
+(map! :map deft-mode-map
+        :n "gr"  #'deft-refresh
+        :n "C-s" #'deft-filter
+        :i "C-n" #'deft-new-file
+        :i "C-m" #'deft-new-file-named
+        :i "C-d" #'deft-delete-file
+        :i "C-r" #'deft-rename-file
+        :n "r"   #'deft-rename-file
+        :n "a"   #'deft-new-file
+        :n "A"   #'deft-new-file-named
+        :n "d"   #'deft-delete-file
+        :n "D"   #'deft-archive-file
+        :n "q"   #'kill-current-buffer)
+#+end_src
+* lsp
+#+begin_src emacs-lisp
+(after! lsp-ui
+  (setq lsp-ui-peek-fontify 'always
+        lsp-log-io nil))
+        ;; lsp-log-io t)) avoid performance hit
+#+end_src
+* evil
+#+begin_src emacs-lisp
+;; (use-package! evil-repeat-motion
+;;   :config
+;;   (evil-repeat-motion-mode 1))
+
+(after! evil
+  (map! :nv "j" 'evil-next-visual-line
+        :nv "k" 'evil-previous-visual-line))
+
+(after! evil
+  (setq evil-escape-key-sequence "jk")
+  (define-key!
+    :keymaps 'evil-insert-state-map
+    (general-chord "kj") 'evil-normal-state
+    (general-chord "jj") 'evil-normal-state))
+
+                                        ;(general-chord " :") 'evil-execute-in-normal-state
+                                        ;(general-chord ": ") 'evil-execute-in-normal-state)
+                                        ;  (general-define-key
+                                        ;   (general-chord " ù") 'keyboard-quit
+                                        ;   (general-chord "ù ") 'keyboard-quit))
+#+end_src
+* avy
+#+begin_src emacs-lisp
+;(after! evil
+;  (general-define-key
+;   ;;:keymaps 'evil-insert-state-map
+;   (general-chord " ,") 'evil-avy-goto-char-timer
+;   (general-chord ", ") 'evil-avy-goto-char-timer))
+
+(after! avy
+  (setq avy-keys '(?q ?s ?d ?f ?g ?h ?j ?k ?l)
+        ;; avy-background t
+        ;; avy-highlight-first t
+        avy-background nil
+        avy-timeout-seconds 0.3
+        avy-single-candidate-jump t)
+  (unless (display-graphic-p)
+        (setq avy-background nil)))
+#+end_src
+* ivy
+[[https://github.com/raxod502/prescient.el/issues/43][Bug with prescient and ripgrep on windows]]
+#+begin_src emacs-lisp
+(after! ivy
+  (setf (alist-get 'counsel-rg ivy-re-builders-alist) #'ivy--regex-plus)
+  ;(general-define-key
+   ;:keymaps 'ivy-switch-buffer-map
+   ;(general-chord ": ") 'ivy-switch-buffer-kill
+    ;'ivy-switch-buffer-kill)
+  (define-key!
+   :keymaps 'ivy-minibuffer-map
+   (general-chord "jk") 'minibuffer-keyboard-quit
+   (general-chord "kj") 'minibuffer-keyboard-quit
+   "M-H" 'helpful-key))
+;   "M-j" 'next-line
+;   "M-k" 'previous-line))
+#+end_src
+* ace-window
+#+begin_src emacs-lisp
+(map! :leader
+        :desc "Jump to window" "a" #'ace-window)
+
+;(after! evil
+;  (general-define-key
+;   ;;:keymaps 'evil-insert-state-map
+;   (general-chord "; ") 'ace-window
+;   (general-chord " ;") 'ace-window))
+(after! ace-window
+  (custom-set-faces!
+  '(aw-leading-char-face
+    :foreground "white" :background "red"
+    :weight bold :height 2.5 :box (:line-width 10 :color "red")))
+  (setq aw-keys '(?q ?s ?d ?f ?g ?h ?j ?k ?l)))
+#+end_src
+* dap
+#+begin_src emacs-lisp
+(when (featurep! :tools debugger +lsp)
+  (remove-hook 'dap-ui-mode-hook #'dap-ui-controls-mode))
+
+(map! :leader
+      (:when (featurep! :tools debugger +lsp)
+       (:prefix-map ("o" . "open")
+        :desc "Debugger" "d" #'dap-debug )))
+
+(after! dap-mode
+  (require 'dap-lldb)
+  (require 'dap-cpptools)
+  (setq dap-print-io nil
+        dap-auto-configure-features '(locals breakpoints expressions tooltip))
+  (dap-register-debug-template
+   "EAP debug"
+   (list :type "cppdbg"
+         :request "launch"
+         :name "EAP debug"
+         :MIMode "gdb"
+         :program "${workspaceFolder}/build/src/EasiPlayer/bin/Debian-8.3-x86_64/EasiPlayer"
+         :cwd "${workspaceFolder}"))
+  (dap-register-debug-template
+   "EAD debug"
+   (list :type "cppdbg"
+         :request "launch"
+         :name "EAD debug"
+         :MIMode "gdb"
+         :program "${workspaceFolder}/build/EasiNetDesigner"
+         :cwd "${workspaceFolder}"))
+
+  (dap-register-debug-template
+   "EADImport debug"
+   (list :type "cppdbg"
+         :request "launch"
+         :name "EADImport debug"
+         :MIMode "gdb"
+         :program "${workspaceFolder}/build/EADImport"
+         :cwd "${workspaceFolder}"))
+  (dap-register-debug-template
+   "EADExport debug"
+   (list :type "cppdbg"
+         :request "launch"
+         :name "EADExport debug"
+         :MIMode "gdb"
+         :program "${workspaceFolder}/build/EADExport"
+         :cwd "${workspaceFolder}"))
+  (dap-register-debug-template
+   "LLDB cpp_project"
+   (list :type "lldb-vscode" :cwd "${workspaceFolder}" :request "launch" :program "${workspaceFolder}/build/ninja/hello.exe" :name "LLDB cpp_project")))
+#+end_src
+* tmux
+#+begin_src emacs-lisp
+(use-package! tmux-pane
+  :config
+  (map!
+   :map 'override
+   (:prefix "M-a"
+    "h" #'tmux-pane-omni-window-left
+    "j" #'tmux-pane-omni-window-down
+    "k" #'tmux-pane-omni-window-up
+    "l" #'tmux-pane-omni-window-right
+    "a" #'tmux-pane-omni-window-last
+    "s" #'tmux-pane-open-horizontal
+    "v" #'tmux-pane-open-vertical
+    "z d" #'tmux-pane-close
+    )))
+#+end_src
+* tty
+#+begin_src emacs-lisp
+#+end_src
+* key-chord
+#+begin_src emacs-lisp
+  (use-package! key-chord
+    :config
+    (setq key-chord-two-keys-delay .10
+          key-chord-one-key-delay .10)
+    (key-chord-mode 1))
+
+#+end_src
+* persp
+#+begin_src emacs-lisp
+;; when opening a emacsclient, stop creating a new workspace
+;; (after! persp-mode (setq persp-emacsclient-init-frame-behaviour-override nil))
+(after! persp-mode
+  (defun display-workspaces-in-minibuffer ()
+    (with-current-buffer " *Minibuf-0*"
+      (erase-buffer)
+      (insert (+workspace--tabline))))
+  (run-with-idle-timer 1 t #'display-workspaces-in-minibuffer)
+  (+workspace/display))
+#+end_src
+* Languages
+** C/C++
+#+begin_src emacs-lisp
+(defun my-c-mode-common-hook ()
+ ;; my customizations for all of c-mode, c++-mode, objc-mode, java-mode
+ (c-set-offset 'substatement-open 0)
+ ;; other customizations can go here
+
+ (setq c++-tab-always-indent t)
+ (setq c-basic-offset 4)                  ;; Default is 2
+ (setq c-indent-level 4)                  ;; Default is 2
+
+ (setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60))
+ (setq tab-width 4)
+ (setq indent-tabs-mode t)  ; use spaces only if nil
+ )
+
+(add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
+#+end_src

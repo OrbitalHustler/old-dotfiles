@@ -9,3 +9,5 @@ ansi --yellow "Ensuring required directories exist.."
 mkdir -pv $HOME/workspace/opt
 
 mkdir -pv $HOME/org/roam
+
+mkdir -pv $HOME/.local/share/applications

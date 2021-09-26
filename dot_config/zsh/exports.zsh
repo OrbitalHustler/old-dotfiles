@@ -24,6 +24,10 @@ export FZF_BASE="$HOME/.local/fzf"
 export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border=top --info=inline --preview-window=border-left --bind=backward-eof:abort,alt-up:preview-page-up,alt-down:preview-page-down,shift-up:preview-half-page-up,shift-down:preview-half-page-down'
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
+export RUSTUP_HOME="$HOME/.local/rustup"
+export CARGO_HOME="$HOME/.local/cargo"
+path=("$HOME/.local/cargo/bin" $path)
+
 # less
 ## nicer highlighting
 export PAGER="less -FR"

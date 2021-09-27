@@ -114,7 +114,7 @@ font:
     style: Italic
 
   # Point size
-  size: 12.0
+  size: 13.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -668,7 +668,17 @@ mouse_bindings:
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
 key_bindings:
-  - { key: V, mods: Control,                                       action: Paste          }
+# Keycodes on Azerty:
+# 50: Comma ,
+# 51: Semi-colon ;
+# 51 + Shift: Period .
+# 52: Colon :
+  - { key: 50,      mods: Control,          chars: "\u1285" } # C-, in emacs
+  - { key: 51,      mods: Control,          chars: "\u1286" } # C-; in emacs
+  - { key: 51,      mods: Shift|Control,    chars: "\u1284" } # C-. in emacs
+  - { key: PageUp,  mods: Shift|Control,    action: ReceiveChar}
+  - { key: Space,   mods: Shift|Control,    action: ReceiveChar }
+  - { key: V,       mods: Control,          action: Paste }
   - { key: A, mods: Alt, chars: "\x1ba" }
   - { key: B, mods: Alt, chars: "\x1bb" }
   - { key: C, mods: Alt, chars: "\x1bc" }

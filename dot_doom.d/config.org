@@ -24,7 +24,8 @@
           (eq t (and (stringp (daemonp))
                      (compare-strings (daemonp) nil nil "x" nil nil))))
       (setq doom-theme 'tsdh-dark)
-    (setq doom-theme 'doom-monokai-classic)))
+    ;; (setq doom-theme 'doom-monokai-classic)))
+    (setq doom-theme 'tsdh-dark)))
 #+end_src
 * WSL
 #+begin_src emacs-lisp
@@ -423,7 +424,14 @@ This is a workaround for[[https://github.com/hlissner/doom-emacs/issues/2991][ t
 #+end_src
 * tty
 #+begin_src emacs-lisp
+;; Alacritty binds "C-." to "\u1284" which gets translated by emacs back to "C-."
+(if (not (window-system))
+    (map! :map key-translation-map
+      "\u1284" "C-."
+      "\u1285" "C-,"
+      "\u1286" "C-;"))
 #+end_src
+
 * key-chord
 #+begin_src emacs-lisp
   (use-package! key-chord
@@ -431,12 +439,13 @@ This is a workaround for[[https://github.com/hlissner/doom-emacs/issues/2991][ t
     (setq key-chord-two-keys-delay .10
           key-chord-one-key-delay .10)
     (key-chord-mode 1))
-
 #+end_src
 * persp
 #+begin_src emacs-lisp
 ;; when opening a emacsclient, stop creating a new workspace
 ;; (after! persp-mode (setq persp-emacsclient-init-frame-behaviour-override nil))
+
+;; always display workspaces in minibuffer
 (after! persp-mode
   (defun display-workspaces-in-minibuffer ()
     (with-current-buffer " *Minibuf-0*"
@@ -464,3 +473,5 @@ This is a workaround for[[https://github.com/hlissner/doom-emacs/issues/2991][ t
 
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 #+end_src
+
+ኅ

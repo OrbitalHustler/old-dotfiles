@@ -3,6 +3,9 @@ alias psg='ps aux | grep '
 alias _="sudo"
 alias c="clear"
 alias cm="chezmoi"
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
 
 
 _pager="less"

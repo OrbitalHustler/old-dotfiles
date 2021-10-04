@@ -9,7 +9,7 @@ TMUX_TPM_PATH="$HOME/.tmux/plugins/tpm"
 if [ ! -d "$TMUX_TPM_PATH" ]; then
     mkdir -p "$TMUX_TPM_PATH"
     git clone https://github.com/tmux-plugin/tpm "$TMUX_TPM_PATH"
-    ~/.tmux/plugins/tmp/bin/install_plugins
+    ~/.tmux/plugins/tpm/bin/install_plugins
 fi
 
 VIM_PLUG_PATH="$HOME/.vim/autoload"

@@ -28,6 +28,7 @@ help:
 	@echo '    Logs are stored in      $(LOGFILE)'
 
 update:
+	~/.tmux/plugins/tpm/bin/install_plugins
 	~/.tmux/plugins/tpm/bin/update_plugins all
 	zinit self-update
 	zinit update --parallel
@@ -79,7 +80,6 @@ chezmoi-apply:
 
 all:
 	$(MAKE) ensure-deps
-	zsh
 	$(MAKE) start-services
 	$(MAKE) install-env
 	$(MAKE) conf-sys

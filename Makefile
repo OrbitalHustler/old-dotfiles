@@ -5,6 +5,8 @@ help:
 	@echo 'Management commands for dotfiles:'
 	@echo
 	@echo 'Usage:'
+	@echo '    make update             Update configs: zsh, tmux.'
+	@echo
 	@echo '    make start-services     Starts services (systemd...).'
 	@echo '    make install-env        Install environment.'
 	@echo '    make conf-sys           Configure system files.'
@@ -24,6 +26,11 @@ help:
 	@echo '    make all                Run all.'
 	@echo
 	@echo '    Logs are stored in      $(LOGFILE)'
+
+update:
+	~/.tmux/plugins/tpm/bin/update_plugins all
+	zinit self-update
+	zinit update --parallel
 
 start-services:
 	@echo "Starting services.."
@@ -64,14 +71,15 @@ ensure-deps:
 
 chezmoi-init:
 	@echo "Initializing chezmoi..."
-	chezmoi init -S ${CURDIR} -v
+	~/.local/bin/chezmoi init -S ${CURDIR} -v
 
 chezmoi-apply:
 	@echo "Applying chezmoi.."
-	chezmoi apply -v
+	~/.local/bin/chezmoi apply -v
 
 all:
 	$(MAKE) ensure-deps
+	zsh
 	$(MAKE) start-services
 	$(MAKE) install-env
 	$(MAKE) conf-sys

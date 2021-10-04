@@ -409,6 +409,8 @@ This is a workaround for[[https://github.com/hlissner/doom-emacs/issues/2991][ t
 #+begin_src emacs-lisp
 (use-package! tmux-pane
   :config
+  (setq tmux-pane-vertical-percent 50
+        tmux-pane-horizontal-percent 50)
   (map!
    :map 'override
    (:prefix "M-a"
@@ -475,3 +477,8 @@ This is a workaround for[[https://github.com/hlissner/doom-emacs/issues/2991][ t
 #+end_src
 
 ኅ
+
+* containers
+#+begin_src emacs-lisp
+(add-to-list 'auto-mode-alist '("\\.containerfile$" . dockerfile-mode))
+#+end_src

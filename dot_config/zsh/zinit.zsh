@@ -40,7 +40,6 @@ zinit snippet OMZ::plugins/safe-paste
 zinit ice svn pick"tmux.plugin.zsh"
 zinit snippet OMZ::plugins/tmux
 zinit snippet OMZ::plugins/zoxide
-zinit snippet OMZ::plugins/zsh_reload
 zinit snippet OMZ::plugins/common-aliases
 
 # Bundles from external repos

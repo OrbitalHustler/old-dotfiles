@@ -25,4 +25,5 @@ vim
 wget
 zsh
 zip
+libgccjit0
 subversion

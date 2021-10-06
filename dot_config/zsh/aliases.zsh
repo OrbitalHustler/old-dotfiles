@@ -1,4 +1,4 @@
-alias m='git --git-dir="$HOME/.myconfig" --work-tree="$HOME"'
+alias e='emacsclient --tty -s tty --alternate-editor='
 alias psg='ps aux | grep '
 alias _="sudo"
 alias c="clear"

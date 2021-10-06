@@ -3,7 +3,9 @@ set -euo pipefail
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 . "$DIR/base.sh"
+cd $DIR
 
+. ./asdf/install_asdf.sh
 
 TMUX_TPM_PATH="$HOME/.tmux/plugins/tpm"
 if [ ! -d "$TMUX_TPM_PATH" ]; then
@@ -40,20 +42,6 @@ if [ ! -f "$EMACS_PATH/bin/doom" ]; then
 # "$EMACS_PATH/bin/doom" -y sync -e
 fi
 
-ASDF_DIR=$HOME/.local/asdf
-if [ ! -d "$ASDF_DIR" ]; then
-    git clone https://github.com/asdf-vm/asdf.git $ASDF_DIR --branch v0.8.1
-    . ~/.local/asdf/asdf.sh
-    asdf plugin add direnv
-    asdf install direnv latest
-    asdf global direnv latest
-    asdf plugin add bat
-    asdf install bat latest
-    asdf global bat latest
-    asdf plugin add bitwarden
-    asdf install bitwarden v1.18.0
-    asdf global bitwarden v1.18.0
-fi
 
 # NOTES_PATH="$HOME/.local/bin/notes"
 # if [ ! -f "$NOTES_PATH" ]; then
@@ -71,6 +59,7 @@ fi
 ZOXIDE_PATH="$HOME/.local/bin/zoxide"
 if [ ! -f "$ZOXIDE_PATH" ]; then
     curl -sS https://webinstall.dev/zoxide | bash
+    ln -s "$ZOXIDE_PATH" ~/.local/bin
 fi
 
 LS_COLORS_PATH="$HOME/.local/share/lscolors.sh"

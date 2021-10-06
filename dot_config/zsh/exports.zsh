@@ -8,6 +8,10 @@ path=("$HOME/.local/bin:$HOME/.bin:$HOME/.mybin" $path)
 typeset -U FPATH
 fpath=("$HOME/.config/zsh/completions" $fpath)
 
+# Zinit
+declare -A ZINIT
+ZINIT[HOME_DIR]="$HOME/.local/zinit"
+
 export PROJECT_HOME="$HOME/workspace"
 export WORKSPACE="$PROJECT_HOME"
 export EDITOR="emacsclient --tty -s tty -a="
@@ -16,12 +20,13 @@ export VISUAL="$EDITOR"
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 
+
 export ASDF_DIR="$HOME/.local/asdf"
 export ASDF_DATA_DIR="$ASDF_DIR"
 
 export FZF_BASE="$HOME/.local/fzf"
 #export FZF_DEFAULT_OPTS='--height 30% --layout=reverse --border'
-export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border=top --info=inline --preview-window=border-left --bind=backward-eof:abort,alt-up:preview-page-up,alt-down:preview-page-down,shift-up:preview-half-page-up,shift-down:preview-half-page-down'
+export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border=top --info=inline --preview-window=border-left,wrap --bind=backward-eof:abort,alt-up:preview-page-up,alt-down:preview-page-down,shift-up:preview-half-page-up,shift-down:preview-half-page-down'
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 export RUSTUP_HOME="$HOME/.local/rustup"
@@ -33,6 +38,7 @@ path=("$HOME/.local/cargo/bin" $path)
 export PAGER="less -FR"
 export BAT_PAGER="less -FR"
 export LESS="-FR"
+
 if [ -f "/usr/share/source-highlight/src-hilite-lesspipe.sh" ]; then
     export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 elif [ -f "/usr/bin/src-hilite-lesspipe.sh" ]; then
@@ -48,9 +54,10 @@ if [[ ${PAGER} == 'less' ]]; then
     (( ! ${+LESS_TERMCAP_us} )) && export LESS_TERMCAP_us=$'\E[1;32m'   # Begins underline.
 fi
 
-if (( ${+commands[bat]} )); then
+# if (( ${+commands[bat]} )); then
     export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-fi
+# fi
+
 export ZSH_TMUX_AUTOSTART=true
 export ZSH_HIGHLIGHT_MAXLENGTH=512
 export ZVM_VI_INSERT_ESCAPE_BINDKEY=jk

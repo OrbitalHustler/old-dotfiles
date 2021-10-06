@@ -5,7 +5,8 @@ help:
 	@echo 'Management commands for dotfiles:'
 	@echo
 	@echo 'Usage:'
-	@echo '    make update             Update configs: zsh, tmux.'
+	@echo '    make update             Update configs: zsh, tmux, asdf'
+	@echo '    make update-zsh-completions'
 	@echo
 	@echo '    make start-services     Starts services (systemd...).'
 	@echo '    make install-env        Install environment.'
@@ -28,10 +29,14 @@ help:
 	@echo '    Logs are stored in      $(LOGFILE)'
 
 update:
+	./scripts/asdf/update_asdf_plugins.sh
 	~/.tmux/plugins/tpm/bin/install_plugins
 	~/.tmux/plugins/tpm/bin/update_plugins all
 	zinit self-update
 	zinit update --parallel
+
+update-zsh-completions:
+	echo "Not yet implemented"
 
 start-services:
 	@echo "Starting services.."

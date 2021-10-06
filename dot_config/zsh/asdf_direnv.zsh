@@ -2,11 +2,13 @@
 
 . $ASDF_DIR/asdf.sh
 
-# # Shortcut for asdf managed direnv
+## Shortcut for asdf managed direnv
 direnv() { asdf exec direnv "$@"; }
 
 # hook direnv into shells
-eval "$(direnv hook zsh)"
+# https://zdharma.github.io/zinit/wiki/Direnv-explanation/
+# eval "$(direnv hook zsh)"
+# see zinit.zsh for the hook
 
 # Silence direnv loading
 _direnv_hook() {

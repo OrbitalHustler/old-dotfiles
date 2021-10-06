@@ -8,19 +8,18 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 . $DIR/exports.zsh
-[ -f ~/.local/share/lscolors.sh ] && source ~/.local/share/lscolors.sh
 
+. $DIR/zinit.zsh
 . $DIR/init.zsh
 . $DIR/history.zsh
-# source "$HOME/.zsh/antigen.zsh"
-. $DIR/zinit.zsh
+
 . $DIR/asdf_direnv.zsh
 . $DIR/aliases.zsh
 
 [ -f ~/.aliasesrc ] && source ~/.aliasesrc
 [ -f ~/.localrc ] && source ~/.localrc
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 . $DIR/p10k.zsh
 
 # fzf and fancy-ctrl-z needs to be loaded after zsh-vi-mode

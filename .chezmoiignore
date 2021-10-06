@@ -1,7 +1,9 @@
-docker-entrypoint.sh
-install.sh
 Makefile
-package-lists
-scripts
 README.org
 containerfiles
+doc
+docker-entrypoint.sh
+fonts
+install.sh
+package-lists
+scripts

@@ -6,6 +6,7 @@ copyq
 curl
 exa
 fd-find
+gawk
 gettext
 jq
 locate

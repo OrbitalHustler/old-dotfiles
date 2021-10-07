@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
 
-if [[ ! -f $ZINIT_HOME/bin/zinit.zsh ]]; then
+if [[ ! -f $ZINIT[HOME_DIR]/bin/zinit.zsh ]]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 fi
 
-source "$ZINIT_HOME/bin/zinit.zsh"
+source "$ZINIT[HOME_DIR]/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
@@ -44,8 +44,6 @@ zinit ice wait lucid
 zinit snippet OMZ::plugins/rsync
 zinit ice wait lucid
 zinit snippet OMZ::plugins/safe-paste
-zinit ice svn pick"tmux.plugin.zsh" wait lucid
-zinit snippet OMZ::plugins/tmux
 zinit ice wait lucid
 zinit snippet OMZ::plugins/zoxide
 zinit ice wait lucid
@@ -54,8 +52,6 @@ zinit snippet OMZ::plugins/common-aliases
 # # Bundles from external repos
 zinit ice wait lucid
 zinit load Tarrasch/zsh-bd
-zinit ice wait lucid
-zinit load davidde/git
 zinit ice wait lucid
 zinit load djui/alias-tips
 zinit ice wait lucid
@@ -67,12 +63,18 @@ zinit load rutchkiwi/copyzshell
 zinit ice wait lucid
 zinit load wfxr/forgit
 zinit ice wait lucid
-zinit load jeffreytse/zsh-vi-mode
-zinit ice wait lucid
 zinit load redxtech/zsh-show-path
 # zinit load kutsan/zsh-system-clipboard
 zinit ice wait lucid
 zinit load zsh-users/zsh-completions
+
+# Do not turbo mode (ice wait) these packages
+zinit load jeffreytse/zsh-vi-mode # problems with fzf Ctrl+R, Ctrl+Z, Ctrl+T bindings if turbo
+zinit ice svn pick"tmux.plugin.zsh"
+zinit snippet OMZ::plugins/tmux
+zinit load Aloxaf/fzf-tab
+zinit snippet OMZ::plugins/fzf # after fzf-tab
+zinit load davidde/git
 
 # Direnv hook into zsh
 # https://zdharma.github.io/zinit/wiki/Direnv-explanation/
@@ -90,11 +92,7 @@ zinit ice atclone"dircolors -b LS_COLORS > clrs.zsh" \
 zinit light trapd00r/LS_COLORS
 
 # # # Order important
-zinit ice wait lucid
-zinit load Aloxaf/fzf-tab
-zinit ice wait lucid
-zinit snippet OMZ::plugins/fzf # after fzf-tab
-zinit ice wait lucid
+zinit ice wait"1" lucid
 zinit load zsh-users/zsh-syntax-highlighting # last
 
 zicompinit; zicdreplay

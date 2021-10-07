@@ -1,3 +1,10 @@
-direnv latest
 bat latest
 bitwarden v1.18.0
+direnv latest
+exa latest
+fd latest
+fzf latest
+jq latest
+ripgrep latest
+shellcheck latest
+zoxide latest

@@ -48,28 +48,3 @@ fi
 #     curl -L https://raw.githubusercontent.com/pimterry/notes/latest-release/install.sh | PREFIX=$HOME/.local bash
 # fi
 
-FZF_DIR="$HOME/.local/fzf"
-FZF_PATH="$FZF_DIR/bin/fzf"
-if [ ! -f "$FZF_PATH" ]; then
-    git clone --depth 1 https://github.com/junegunn/fzf.git "$FZF_DIR"
-    "$FZF_DIR/install" --no-update-rc
-    ln -s "$FZF_PATH" ~/.local/bin/fzf
-fi
-
-ZOXIDE_PATH="$HOME/.local/bin/zoxide"
-if [ ! -f "$ZOXIDE_PATH" ]; then
-    curl -sS https://webinstall.dev/zoxide | bash
-    ln -s "$ZOXIDE_PATH" ~/.local/bin
-fi
-
-LS_COLORS_PATH="$HOME/.local/share/lscolors.sh"
-if [ ! -f "$LS_COLORS_PATH" ]; then
-    rm -rf /tmp/LS_COLORS && mkdir /tmp/LS_COLORS && curl -L https://api.github.com/repos/trapd00r/LS_COLORS/tarball/master\
-        | tar xzf - --directory=/tmp/LS_COLORS --strip=1
-( cd /tmp/LS_COLORS && sh install.sh )
-fi
-
-if [ ! -f "$CARGO_HOME/bin/cargo" ]; then
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
-fi
-

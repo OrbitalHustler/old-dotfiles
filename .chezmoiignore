@@ -1,3 +1,4 @@
+.editorconfig
 Makefile
 README.org
 containerfiles
@@ -6,4 +7,4 @@ docker-entrypoint.sh
 fonts
 install.sh
 package-lists
-scripts
+script

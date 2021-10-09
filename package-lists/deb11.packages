@@ -4,6 +4,7 @@ build-essential
 cmake
 copyq
 curl
+editorconfig
 gawk
 gettext
 libgccjit0

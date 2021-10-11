@@ -20,5 +20,6 @@ if [ -L "$FZF" ]; then
 fi
 
 if [ ! -f "$FZF" ]; then
-    ln -s $(dirname $(dirname $(asdf which fzf))) "$FZF"	
+    ln -s $(dirname $(dirname $(asdf which fzf))) "$FZF"
+    $FZF/install --completion --key-bindings --no-update-rc
 fi

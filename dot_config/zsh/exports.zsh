@@ -17,8 +17,8 @@ export WORKSPACE="$PROJECT_HOME"
 export EDITOR="emacsclient --tty -s tty -a="
 #export VISUAL="$HOME/.bin/editor"
 export VISUAL="$EDITOR"
-export LC_ALL="en_US.UTF-8"
-export LANG="en_US.UTF-8"
+# export LC_ALL="en_US.UTF-8"
+# export LANG="en_US.UTF-8"
 
 
 export ASDF_DIR="$HOME/.local/asdf"

@@ -76,7 +76,6 @@ install-fonts:
 	@echo "Installing fonts.."
 	mkdir -p ~/.local/share/fonts
 	cp ./fonts/* ~/.local/share/fonts
-	fc-cache -fv
 
 ensure-dirs:
 	@echo "Ensuring directories.."

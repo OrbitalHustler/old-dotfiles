@@ -3,6 +3,7 @@ alias psg='ps aux | grep '
 alias _="sudo"
 alias c="clear"
 alias cm="chezmoi"
+alias cmcd="cd $HOME/.local/share/chezmoi"
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."

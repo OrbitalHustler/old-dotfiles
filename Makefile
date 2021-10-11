@@ -83,9 +83,9 @@ ensure-dirs:
 
 ensure-deps:
 	@echo "Ensuring dependencies.."
+	$(MAKE) install-fonts
 	$(MAKE) install-deps
 	$(MAKE) install-chezmoi
-	$(MAKE) install-fonts
 
 chezmoi-init:
 	@echo "Initializing chezmoi..."

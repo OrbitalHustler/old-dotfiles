@@ -74,8 +74,8 @@ install-deps:
 
 install-fonts:
 	@echo "Installing fonts.."
-	mkdir -p "$HOME/.local/share/fonts"
-	cp ./fonts/* "$HOME/.local/share/fonts"
+	mkdir -p ~/.local/share/fonts
+	cp ./fonts/* ~/.local/share/fonts
 	fc-cache -fv
 
 ensure-dirs:

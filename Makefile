@@ -30,12 +30,21 @@ help:
 	@echo
 	@echo '    Logs are stored in      $(LOGFILE)'
 
-update:
-	./scripts/asdf/update_asdf_plugins.sh
+update-tmux:
 	~/.tmux/plugins/tpm/bin/install_plugins
 	~/.tmux/plugins/tpm/bin/update_plugins all
+
+update-zinit:
 	zinit self-update
 	zinit update --parallel
+
+update-asdf:
+	./scripts/asdf/update_asdf_plugins.sh
+
+update:
+	$(MAKE) update-tmux
+	$(MAKE) update-zinit
+	$(MAKE) update-asdf
 
 update-zsh-completions:
 	echo "Not yet implemented"
@@ -86,6 +95,7 @@ ensure-deps:
 	$(MAKE) install-fonts
 	$(MAKE) install-deps
 	$(MAKE) install-chezmoi
+	$(MAKE) update-tmux
 
 chezmoi-init:
 	@echo "Initializing chezmoi..."

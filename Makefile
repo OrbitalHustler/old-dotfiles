@@ -38,6 +38,9 @@ update-zinit:
 	zinit self-update
 	zinit update --parallel
 
+install-asdf:
+	./scripts/asdf/install_asdf.sh
+
 update-asdf:
 	./scripts/asdf/update_asdf_plugins.sh
 
@@ -95,6 +98,7 @@ ensure-deps:
 	$(MAKE) install-fonts
 	$(MAKE) install-deps
 	$(MAKE) install-chezmoi
+	$(MAKE) install-asdf
 	$(MAKE) update-tmux
 
 chezmoi-init:

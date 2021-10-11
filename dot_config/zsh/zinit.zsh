@@ -73,6 +73,7 @@ zinit load jeffreytse/zsh-vi-mode # problems with fzf Ctrl+R, Ctrl+Z, Ctrl+T bin
 zinit ice svn pick"tmux.plugin.zsh"
 zinit snippet OMZ::plugins/tmux
 zinit load Aloxaf/fzf-tab
+zinit snippet OMZ::plugins/fzf # after fzf-tab
 zinit load davidde/git
 
 # Direnv hook into zsh

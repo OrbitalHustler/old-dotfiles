@@ -24,8 +24,7 @@ export VISUAL="$EDITOR"
 export ASDF_DIR="$HOME/.local/asdf"
 export ASDF_DATA_DIR="$ASDF_DIR"
 
-# export FZF_BASE="$HOME/.local/fzf"
-#export FZF_DEFAULT_OPTS='--height 30% --layout=reverse --border'
+export FZF_BASE="$HOME/.local/fzf"
 export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border=top --info=inline --preview-window=border-left,wrap --bind=backward-eof:abort,alt-up:preview-page-up,alt-down:preview-page-down,shift-up:preview-half-page-up,shift-down:preview-half-page-down'
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 

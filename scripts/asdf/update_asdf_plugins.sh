@@ -14,3 +14,11 @@ while read line; do
     asdf global $package $version
 done < $PACKAGES
 
+FZF="$HOME/.local/fzf"
+if [ -L "$FZF" ]; then
+    rm "$FZF"
+fi
+
+if [ ! -f "$FZF" ]; then
+    ln -s $(dirname $(dirname $(asdf which fzf))) "$FZF"	
+fi

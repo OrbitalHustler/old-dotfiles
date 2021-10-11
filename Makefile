@@ -24,6 +24,7 @@ help:
 	@echo '    make post-chezmoi       Run post chezmoi scripts.'
 	@echo '    make install-chezmoi    Install chezmoi.'
 	@echo '    make install-deps       Install system dependencies.'
+	@echo '    make install-fonts      Install fonts.'
 	@echo '    make ensure-dirs        Creates required directories.'
 	@echo
 	@echo
@@ -71,6 +72,12 @@ install-deps:
 	@echo "Installing dependencies.."
 	bash ./scripts/install_deps.sh | tee -a $(LOGFILE)
 
+install-fonts:
+	@echo "Installing fonts.."
+	mkdir -p "$HOME/.local/share/fonts"
+	cp ./fonts/* "$HOME/.local/share/fonts"
+	fc-cache -fv
+
 ensure-dirs:
 	@echo "Ensuring directories.."
 	bash ./scripts/ensure_directories.sh | tee -a $(LOGFILE)
@@ -78,6 +85,7 @@ ensure-dirs:
 ensure-deps:
 	@echo "Ensuring dependencies.."
 	$(MAKE) install-chezmoi
+	$(MAKE) install-fonts
 	$(MAKE) install-deps
 
 chezmoi-init:

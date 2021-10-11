@@ -25,3 +25,5 @@ fi
 # fzf and fancy-ctrl-z needs to be loaded after zsh-vi-mode
 zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
 zvm_after_init_commands+=("bindkey '^Z' fancy-ctrl-z")
+
+if [ "$TMUX" = "" ]; then tmux -u; fi

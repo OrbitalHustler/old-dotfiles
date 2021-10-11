@@ -6,6 +6,7 @@ RUN apt-get -y install git curl file build-essential lsb-release vim sudo
 
 RUN useradd -ms /bin/bash podmatt
 RUN echo 'podmatt ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+RUN echo 'podmatt:podmatt' | chpasswd
 
 USER podmatt
 

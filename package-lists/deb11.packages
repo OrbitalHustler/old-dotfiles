@@ -1,3 +1,4 @@
+apt-file
 autoconf
 bash-completion
 build-essential
@@ -16,6 +17,7 @@ man-db
 pkg-config
 podman
 source-highlight
+sqlite3
 ssh
 subversion
 texinfo

@@ -1,10 +1,14 @@
 LOGFILE=/tmp/dotfiles.log
+CHEZMOI=~/.local/bin/chezmoi
 
 default: run
 help:
 	@echo 'Management commands for dotfiles:'
 	@echo
 	@echo 'Usage:'
+	@echo '    make run                Ensure deps and apply chezmoi.'
+	@echo '    make all                Run all.'
+
 	@echo '    make update             Update configs: zsh, tmux, asdf'
 	@echo '    make update-zsh-completions'
 	@echo
@@ -13,7 +17,7 @@ help:
 	@echo '    make conf-sys           Configure system files.'
 	@echo '    make ssh-perms          Set SSH permissions.'
 	@echo '    make gnupg-perms        Set GnuPG permissions.'
-	@echo '    make os-defaults        Configure OS defaults'
+	@echo '    make configure-sys      Configure system'
 	@echo '    make ensure-deps        Install all dependencies.'
 	@echo '    make chezmoi-init       Initialize chezmoi.'
 	@echo '    make chezmoi-apply      Apply chezmoi files (runs all scripts).'
@@ -22,9 +26,6 @@ help:
 	@echo '    make install-deps       Install system dependencies.'
 	@echo '    make ensure-dirs        Creates required directories.'
 	@echo
-	@echo
-	@echo '    make run                Ensure deps and apply chezmoi.'
-	@echo '    make all                Run all.'
 	@echo
 	@echo '    Logs are stored in      $(LOGFILE)'
 
@@ -58,6 +59,10 @@ gnupg-perms:
 	@echo "Setting GnuPG permissions.."
 	bash ./scripts/set_gnupg_perms.sh | tee -a $(LOGFILE)
 
+configure-system:
+	@echo "Configuring Operating System"
+	bash ./scripts/configure_sys.sh | tee -a $(LOGFILE)
+
 install-chezmoi:
 	@echo "Installing chezmoi..."
 	bash ./scripts/install_chezmoi.sh
@@ -77,11 +82,11 @@ ensure-deps:
 
 chezmoi-init:
 	@echo "Initializing chezmoi..."
-	~/.local/bin/chezmoi init -S ${CURDIR} -v
+	$(CHEZMOI) init -S ${CURDIR} -v
 
 chezmoi-apply:
 	@echo "Applying chezmoi.."
-	~/.local/bin/chezmoi apply -v
+	$(CHEZMOI) apply -v
 
 all:
 	$(MAKE) ensure-deps

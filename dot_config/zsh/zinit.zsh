@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 if [[ ! -f $ZINIT[HOME_DIR]/bin/zinit.zsh ]]; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+    echo -e "y" | ZINIT_HOME="$ZINIT[HOME_DIR]" sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 fi
 
 source "$ZINIT[HOME_DIR]/bin/zinit.zsh"

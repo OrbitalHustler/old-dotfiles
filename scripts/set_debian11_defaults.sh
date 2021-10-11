@@ -19,18 +19,28 @@ fi
 # ask sudo upfront
 sudo -v
 
-ansi --green "Updating pacman.conf.."
+# ansi --green "Updating pacman.conf.."
 # sudo sed -i '/Color$/s/^#//g' /etc/pacman.conf
 # sudo sed -i '/TotalDownload$/s/^#//g' /etc/pacman.conf
 # sudo sed -i '/CheckSpace$/s/^#//g' /etc/pacman.conf
 # sudo sed -i '/VerbosePkgLists$/s/^#//g' /etc/pacman.conf
 
-ansi --green "Enable timedatectl and set up timezone"
+# ansi --green "Enable timedatectl and set up timezone"
 # sudo timedatectl set-timezone America/Sao_Paulo
 # sudo timedatectl set-ntp 1
 # sudo timedatectl set-local-rtc 0
 # sudo ln -sf /usr/share/zoneinfo/Ameriaca/Sao_Paulo /etc/localtime
 
-ansi --green "Setup locale"
+# ansi --green "Setup locale"
 # sudo sed -i '/en_US.UTF-8$/s/^#//g' /etc/pacman.conf
 # sudo locale-gen
+
+ansi --green "Setup sysctl"
+
+# $1 line $2 file
+function sudo_add_line_if_not_in_file() {
+    grep -qxF -- "$1" "$2" || echo "$1" | sudo tee -a "$2"
+}
+
+sudo_add_line_if_not_in_file "net.ipv4.ip_unprivileged_port_start=0" /etc/sysctl.conf
+sudo_add_line_if_not_in_file "net.ipv4.ip_forward=1" /etc/sysctl.conf

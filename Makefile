@@ -44,6 +44,9 @@ install-asdf:
 update-asdf:
 	./scripts/asdf/update_asdf_plugins.sh
 
+install-tpm:
+	./scripts/install_tpm.sh
+
 update:
 	$(MAKE) update-tmux
 	$(MAKE) update-zinit
@@ -99,6 +102,7 @@ ensure-deps:
 	$(MAKE) install-deps
 	$(MAKE) install-chezmoi
 	$(MAKE) install-asdf
+	$(MAKE) install-tpm
 	$(MAKE) update-tmux
 
 chezmoi-init:

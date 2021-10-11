@@ -5,8 +5,6 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 . "$DIR/base.sh"
 cd $DIR
 
-. ./asdf/install_asdf.sh
-
 TMUX_TPM_PATH="$HOME/.tmux/plugins/tpm"
 if [ ! -d "$TMUX_TPM_PATH" ]; then
     mkdir -p "$TMUX_TPM_PATH"

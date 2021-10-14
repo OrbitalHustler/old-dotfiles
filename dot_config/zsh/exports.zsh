@@ -20,6 +20,9 @@ export VISUAL="$EDITOR"
 # export LC_ALL="en_US.UTF-8"
 # export LANG="en_US.UTF-8"
 
+export CURL_HOME="$HOME/.config/curl"
+export WGETRC="$HOME/.config/wget/wgetrc"
+
 
 export ASDF_DIR="$HOME/.local/asdf"
 export ASDF_DATA_DIR="$ASDF_DIR"

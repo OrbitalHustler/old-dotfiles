@@ -8,12 +8,15 @@ curl
 editorconfig
 gawk
 gettext
+isync
 libgccjit0
 locate
 lsb-release
+maildir-utils
 mailutils
 make
 man-db
+msmtp
 pkg-config
 podman
 source-highlight

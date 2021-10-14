@@ -48,8 +48,6 @@
 
 * Bug fixes
 #+begin_src emacs-lisp
-(setq company-tooltip-idle-delay 0.1
-      company-idle-delay 0.1)
 (setq-default left-fringe-width 10)
 #+end_src
 
@@ -67,8 +65,10 @@ Add icons to company without company-box.
                                                              #'company-vscode-dark-icons-margin )))))
 (use-package! company
   :custom
-  (company-icon-size 20))
-
+  (company-icon-size 20)
+  :config
+  (setq company-tooltip-idle-delay 0.1
+        company-idle-delay nil))
 ;; (add-hook 'lsp-mode-hook
 ;;           (lambda ()
 ;;             (setq-local company-format-margin-function
@@ -431,8 +431,19 @@ This is a workaround for[[https://github.com/hlissner/doom-emacs/issues/2991][ t
     (map! :map key-translation-map
       "\u1284" "C-."
       "\u1285" "C-,"
-      "\u1286" "C-;"))
+      "\u1286" "C-;"
+      "\u1283" "C-SPC"
+      "\u1282" "C-<tab>"
+      "\u1279" "<C-i>"
+      "\u1278" "C-I"
+      ))
+;; (use-package! better-jumper
+;;   :config
+;;   (map!
+;;    :n "C-i" #'better-jumper-jump-forward))
 #+end_src
+
+
 
 * key-chord
 #+begin_src emacs-lisp
@@ -455,6 +466,9 @@ This is a workaround for[[https://github.com/hlissner/doom-emacs/issues/2991][ t
       (insert (+workspace--tabline))))
   (run-with-idle-timer 1 t #'display-workspaces-in-minibuffer)
   (+workspace/display))
+#+end_src
+* mu4e
+#+begin_src emacs-lisp
 #+end_src
 * Languages
 ** C/C++

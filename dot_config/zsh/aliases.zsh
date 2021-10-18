@@ -1,4 +1,5 @@
 alias e='emacsclient --tty -s tty --alternate-editor='
+alias en='emacs -nw'
 alias psg='ps aux | grep '
 alias _="sudo"
 alias c="clear"

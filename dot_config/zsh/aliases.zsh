@@ -23,7 +23,7 @@ if (( ${+commands[exa]} )); then
 	alias ll='exa -l'
 	function lll() {
 	exa -l --color=always $1 | $_pager
-}
+	}
 	alias lla='exa -la'
 	alias llt='exa -T'
 	alias llfu='exa -bghHliS --git'
@@ -34,7 +34,7 @@ else
 	alias la='ll -A'         # Lists human readable sizes, hidden files.
 	function lm() {
 	la --color=always $1 | $_pager # Lists human readable sizes, hidden files through pager.
-}
+	}
 	alias lx='ll -XB'        # Lists sorted by extension (GNU only).
 	alias lk='ll -Sr'        # Lists sorted by size, largest last.
 	alias lt='ll -tr'        # Lists sorted by date, most recent last.
@@ -47,7 +47,8 @@ alias sl='ls'
 alias dc='cd':w
 
 
-alias v='vim'
+alias v='nvim'
+alias vim='nvim'
 alias e='emacsclient --tty -s tty --alternate-editor='
 alias editor='$EDITOR'
 
@@ -58,5 +59,5 @@ fi
 dotfiles-update() { chezmoi cd && ./install.sh; }
 
 function dotf {
-	(cd $HOME/dotfiles && make "$1")
+(cd $HOME/dotfiles && make "$1")
 }

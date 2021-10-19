@@ -11,3 +11,5 @@ mkdir -pv $HOME/workspace/opt
 mkdir -pv $HOME/org/roam
 
 mkdir -pv $HOME/.local/share/applications
+mkdir -pv $HOME/.local/tmux/plugins
+mkdir -pv $HOME/.vim/autoload

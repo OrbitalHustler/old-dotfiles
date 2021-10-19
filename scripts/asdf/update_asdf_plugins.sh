@@ -14,6 +14,9 @@ while read line; do
     asdf global $package $version
 done < $PACKAGES
 
+# Regenerate asdf-direnv cached environment
+touch "$HOME/.envrc"
+
 FZF="$HOME/.local/fzf"
 if [ -L "$FZF" ]; then
     rm "$FZF"

@@ -111,6 +111,7 @@ chezmoi-init:
 
 chezmoi-apply:
 	@echo "Applying chezmoi.."
+	$(MAKE) ensure-dirs #Ensure that ~/.local/tmux/plugins exists for exemple, before downloading tpm
 	$(CHEZMOI) apply -v
 
 all:
@@ -121,7 +122,6 @@ all:
 	$(MAKE) ssh-perms
 	$(MAKE) gnupg-perms
 	$(MAKE) chezmoi-init
-	$(MAKE) ensure-dirs
 	$(MAKE) chezmoi-apply
 
 run:

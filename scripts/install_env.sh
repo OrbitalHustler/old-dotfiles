@@ -5,12 +5,6 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 . "$DIR/base.sh"
 cd $DIR
 
-VIM_PLUG_PATH="$HOME/.vim/autoload"
-if [ ! -d "$VIM_PLUG_PATH" ]; then
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fi
-
 VIM_SENSIBLE_DIR="$HOME/.vim/pack/tpope/start/sensible"
 if [ ! -d "$VIM_SENSIBLE_DIR" ]; then
     mkdir -p ~/.vim/pack/tpope/start

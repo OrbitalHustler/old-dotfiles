@@ -46,8 +46,6 @@ zinit ice wait lucid
 zinit snippet OMZ::plugins/safe-paste
 zinit ice wait lucid
 zinit snippet OMZ::plugins/zoxide
-zinit ice wait lucid
-zinit snippet OMZ::plugins/common-aliases
 
 # # Bundles from external repos
 zinit ice wait lucid
@@ -75,6 +73,7 @@ zinit snippet OMZ::plugins/tmux
 zinit load Aloxaf/fzf-tab
 zinit snippet OMZ::plugins/fzf # after fzf-tab
 zinit load davidde/git
+zinit snippet OMZ::plugins/common-aliases # if turbo, replaces my aliases
 
 # Direnv hook into zsh
 # https://zdharma.github.io/zinit/wiki/Direnv-explanation/

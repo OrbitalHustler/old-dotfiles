@@ -1,2 +1,5 @@
 #-k # insecure
 #proxy=http://user:password@proxy.corp:8080
+referer = ";auto"
+progress-bar
+show-error

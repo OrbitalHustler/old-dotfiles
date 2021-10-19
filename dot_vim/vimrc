@@ -1,5 +1,10 @@
+source ~/.vim/plugins.vim " include plugs"
+
+if !has('nvim')
+  set ttymouse=xterm2
+endif
+
 inoremap jk <ESC>
-set ttymouse=xterm2
 set mouse=a
 
 " WSL yank support

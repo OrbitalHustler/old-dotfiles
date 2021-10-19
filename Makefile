@@ -44,6 +44,9 @@ install-asdf:
 update-asdf:
 	./scripts/asdf/update_asdf_plugins.sh
 
+update-vim:
+	/usr/bin/vim +'PlugInstall' +qa
+
 install-tpm:
 	./scripts/install_tpm.sh
 
@@ -51,6 +54,7 @@ update:
 	$(MAKE) update-tmux
 	$(MAKE) update-zinit
 	$(MAKE) update-asdf
+	$(MAKE) update-vim
 
 update-zsh-completions:
 	echo "Not yet implemented"
@@ -123,6 +127,7 @@ all:
 	$(MAKE) gnupg-perms
 	$(MAKE) chezmoi-init
 	$(MAKE) chezmoi-apply
+	$(MAKE) update
 
 run:
 	$(MAKE) ensure-deps

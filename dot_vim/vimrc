@@ -222,7 +222,6 @@ au BufRead,BufNewFile *.{md,txt} setlocal textwidth=80
 let g:indentLine_setColors = 1
 
 " disable preview window
-
 set completeopt-=preview
 
 " yank to clipboard
@@ -234,10 +233,6 @@ if has("clipboard")
   endif
 endif
 
-
-if $CODESTATS_API_KEY
-  let g:codestats_api_key = '$CODESTATS_API_KEY'
-endif
 
 if !has('nvim')
   set ttymouse=xterm2

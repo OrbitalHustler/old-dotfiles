@@ -17,14 +17,15 @@
 
 * Theme
 #+begin_src emacs-lisp
-(use-package! doom-themes
-  :init
-  (if (or (window-system)
-          (eq t (and (stringp (daemonp))
-                     (compare-strings (daemonp) nil nil "x" nil nil))))
-      (setq! doom-theme 'tsdh-dark)
-    ;; (setq doom-theme 'doom-monokai-classic)))
-    (setq! doom-theme 'tsdh-dark)))
+;; (setq! doom-theme 'doom-wombat)
+;; (use-package! doom-themes
+;;   :config
+;;   (if (or (window-system)
+;;           (eq t (and (stringp (daemonp))
+;;                      (compare-strings (daemonp) nil nil "x" nil nil))))
+;;       (setq! doom-theme 'doom-wombat)
+;;     ;; (setq doom-theme 'doom-monokai-classic)))
+;;     (setq! doom-theme 'doom-wombat)))
 #+end_src
 * WSL
 #+begin_src emacs-lisp

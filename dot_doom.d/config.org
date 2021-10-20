@@ -17,7 +17,7 @@
 
 * Theme
 #+begin_src emacs-lisp
-;; (setq! doom-theme 'doom-wombat)
+(setq! doom-theme 'doom-monokai-pro)
 ;; (use-package! doom-themes
 ;;   :config
 ;;   (if (or (window-system)

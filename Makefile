@@ -49,9 +49,6 @@ update-vim:
 	vim +'PlugInstall' +qa
 	vim +'UpdateRemotePlugins' +qa
 
-install-tpm:
-	./scripts/install_tpm.sh
-
 update:
 	$(MAKE) update-tmux
 	$(MAKE) update-zinit
@@ -108,8 +105,6 @@ ensure-deps:
 	$(MAKE) install-deps
 	$(MAKE) install-chezmoi
 	$(MAKE) install-asdf
-	$(MAKE) install-tpm
-	$(MAKE) update-tmux
 
 chezmoi-init:
 	@echo "Initializing chezmoi..."
@@ -135,3 +130,4 @@ run:
 	$(MAKE) ensure-deps
 	$(MAKE) chezmoi-init
 	$(MAKE) chezmoi-apply
+	$(MAKE) update

@@ -34,9 +34,9 @@ update-tmux:
 	~/.tmux/plugins/tpm/bin/install_plugins
 	~/.tmux/plugins/tpm/bin/update_plugins all
 
+# TODO Find a better way than asking user to update theirself!
 update-zinit:
-	zinit self-update
-	zinit update --parallel
+	echo ">>>> PLEASE Run the following command:\nzinit self-update && zinit update --parallel --all"
 
 install-asdf:
 	./scripts/asdf/install_asdf.sh
@@ -51,9 +51,9 @@ update-vim:
 
 update:
 	$(MAKE) update-tmux
-	$(MAKE) update-zinit
 	$(MAKE) update-asdf
 	$(MAKE) update-vim
+	$(MAKE) update-zinit
 
 update-zsh-completions:
 	echo "Not yet implemented"

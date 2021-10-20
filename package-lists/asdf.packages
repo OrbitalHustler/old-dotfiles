@@ -5,7 +5,8 @@ exa latest
 fd latest
 fzf latest
 jq latest
+neovim latest
+python 3.9.7
 ripgrep latest
 shellcheck latest
 zoxide latest
-neovim latest

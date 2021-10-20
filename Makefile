@@ -45,7 +45,9 @@ update-asdf:
 	./scripts/asdf/update_asdf_plugins.sh
 
 update-vim:
-	/usr/bin/vim +'PlugInstall' +qa
+	pip3 install pynvim flake8 --upgrade
+	vim +'PlugInstall' +qa
+	vim +'UpdateRemotePlugins' +qa
 
 install-tpm:
 	./scripts/install_tpm.sh

@@ -36,7 +36,7 @@ update-tmux:
 
 # TODO Find a better way than asking user to update theirself!
 update-zinit:
-	echo ">>>> PLEASE Run the following command:\nzinit self-update && zinit update --parallel --all"
+	echo ">>>> PLEASE Run the following command:\nzinit self-update && zinit update --all"
 
 install-asdf:
 	./scripts/asdf/install_asdf.sh

@@ -668,6 +668,7 @@ mouse_bindings:
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
 key_bindings:
+  - { key: Return,  mods: Alt,              action: ReceiveChar }
   - { key: 50,      mods: Control,          chars: "\u1285" } # C-, in emacs
   - { key: 51,      mods: Control,          chars: "\u1286" } # C-; in emacs
   - { key: 51,      mods: Shift|Control,    chars: "\u1284" } # C-. in emacs
@@ -675,6 +676,7 @@ key_bindings:
   - { key: Tab,     mods: Control,          chars: "\u1282" } # C-<tab> in emacs
   - { key: I,       mods: Control,          chars: "\u1279" } # C-i in emacs
   - { key: I,       mods: Shift|Control,    chars: "\u1278" } # C-I in emacs
+  - { key: Return,  mods: Control,          chars: "\u1277" } # C-RET in emacs
   - { key: PageUp,  mods: Shift|Control,    action: ReceiveChar}
   - { key: Space,   mods: Shift|Control,    action: ReceiveChar }
   - { key: V, mods: Control,                                       action: Paste          }

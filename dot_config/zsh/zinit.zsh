@@ -44,8 +44,6 @@ zinit ice wait lucid
 zinit snippet OMZ::plugins/rsync
 zinit ice wait lucid
 zinit snippet OMZ::plugins/safe-paste
-zinit ice wait lucid
-zinit snippet OMZ::plugins/zoxide
 
 # # Bundles from external repos
 zinit ice wait lucid
@@ -74,6 +72,7 @@ zinit load Aloxaf/fzf-tab
 zinit snippet OMZ::plugins/fzf # after fzf-tab
 zinit load davidde/git
 zinit snippet OMZ::plugins/common-aliases # if turbo, replaces my aliases
+zinit snippet OMZ::plugins/zoxide # if turbo mode, "zi" alias is broken
 
 # Direnv hook into zsh
 # https://zdharma.github.io/zinit/wiki/Direnv-explanation/

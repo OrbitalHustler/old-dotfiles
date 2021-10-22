@@ -5,12 +5,6 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 . "$DIR/base.sh"
 cd $DIR
 
-VIM_SENSIBLE_DIR="$HOME/.vim/pack/tpope/start/sensible"
-if [ ! -d "$VIM_SENSIBLE_DIR" ]; then
-    mkdir -p ~/.vim/pack/tpope/start
-    ( cd ~/.vim/pack/tpope/start && git clone https://tpope.io/vim/sensible.git )
-fi
-
 # TODO: what is this for?
 BASE16_PATH="$HOME/.config/base16-shell"
 if [ ! -d "$BASE16_PATH" ]; then

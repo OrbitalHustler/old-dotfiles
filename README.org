@@ -3,9 +3,8 @@
 #+begin_src bash
 BINDIR="$HOME/.local/bin" sh -c "$(curl -fsLS git.io/chezmoi)" -- init Percee
 cd "$HOME/.local/share/chezmoi"
-make run
+make ensure-dirs ensure-deps chezmoi-apply update
 zsh
-make all
 #+end_src
 * Scripts
 | *Command* | *Description* |

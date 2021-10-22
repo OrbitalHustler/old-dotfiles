@@ -31,8 +31,8 @@ help:
 	@echo '    Logs are stored in      $(LOGFILE)'
 
 update-tmux:
-	~/.tmux/plugins/tpm/bin/install_plugins
-	~/.tmux/plugins/tpm/bin/update_plugins all
+	~/.local/tmux/plugins/tpm/bin/install_plugins
+	~/.local/tmux/plugins/tpm/bin/update_plugins all
 
 # TODO Find a better way than asking user to update theirself!
 update-zinit:

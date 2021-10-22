@@ -6,13 +6,13 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 PKG_DIR="$CHEZMOI_DIR/package-lists/"
 PACKAGES="$PKG_DIR/asdf.packages"
 
-while read line; do
-    package=$(echo $line | awk '{print $1}')
-    version=$(echo $line | awk '{print $2}')
-    asdf plugin-add $package
-    asdf install $package $version
-    asdf global $package $version
-done < $PACKAGES
+while read -r line; do
+    package=$(echo "$line" | awk '{print $1}')
+    version=$(echo "$line" | awk '{print $2}')
+    asdf plugin-add "$package"
+    asdf install "$package" "$version"
+    asdf global "$package" "$version"
+done < "$PACKAGES"
 
 # Regenerate asdf-direnv cached environment
 touch "$HOME/.envrc"
@@ -23,6 +23,6 @@ if [ -L "$FZF" ]; then
 fi
 
 if [ ! -f "$FZF" ]; then
-    ln -s $(dirname $(dirname $(asdf which fzf))) "$FZF"
-    $FZF/install --completion --key-bindings --no-update-rc
+    ln -s "$(dirname "$(dirname "$(asdf which fzf)")")" "$FZF"
+    "$FZF/install" --completion --key-bindings --no-update-rc
 fi

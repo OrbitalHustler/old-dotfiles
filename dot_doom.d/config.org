@@ -184,6 +184,20 @@ This is a workaround for[[https://github.com/hlissner/doom-emacs/issues/2991][ t
       :n "D"   #'deft-archive-file
       :n "q"   #'kill-current-buffer)
 #+end_src
+** caldav
+[[https://git.sehn.dev/linozen/doom/src/commit/7a9126c45fadb5b055f009faa53ef0e9ed72bb46/+org-caldav.el][Example org-caldav config]]
+[[https://www.reddit.com/r/orgmode/comments/8rl8ep/making_orgcaldav_useable/][Example config with a hook and multiple calendars]]
+#+begin_src emacs-lisp
+(use-package! org-caldav
+  :after org
+  :init
+  (setq! org-caldav-url "https://cloud.bluechair.xyz/nextcloud/remote.php/dav/calendars/matt"
+         org-caldav-calendar-id "personal"
+         org-caldav-inbox (expand-file-name "calendar-inbox.org" org-directory)
+         org-caldav-files `(,(expand-file-name "calendar.org" org-directory)))
+  :config
+  (setq! org-icalendar-timezone "Europe/Paris"))
+#+end_src
 * lsp
 #+begin_src emacs-lisp
 (after! lsp-ui
@@ -381,7 +395,14 @@ This is a workaround for[[https://github.com/hlissner/doom-emacs/issues/2991][ t
 
 ;; (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 #+end_src
+* Azerty module update
+#+begin_src emacs-lisp
+;; TODO azerty module: bind é and è instead of [ and ] in org-agenda keymap
+#+end_src
 * containers
 #+begin_src emacs-lisp
 (add-to-list 'auto-mode-alist '("\\.containerfile$" . dockerfile-mode))
 #+end_src
+
+* Things to add when I have time & motivation
+[[https://list.orgmode.org/20200531212322.GF23478@volibear/t/][Solution for contact syncing/editing]]

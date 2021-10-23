@@ -5,9 +5,11 @@ build-essential
 cmake
 copyq
 curl
+dvipng
 editorconfig
 gawk
 gettext
+gnuplot
 isync
 libbz2-dev
 libffi-dev
@@ -29,6 +31,7 @@ sqlite3
 ssh
 subversion
 texinfo
+texlive
 tmux
 vim
 wget

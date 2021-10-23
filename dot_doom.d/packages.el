@@ -71,3 +71,5 @@
 
 (package! emacs-tmux-pane
   :recipe (:host github :repo "laishulu/emacs-tmux-pane"))
+
+(package! org-caldav)

@@ -9,7 +9,10 @@ dvipng
 editorconfig
 gawk
 gettext
+glslang-tools
 gnuplot
+graphviz
+imagemagick
 isync
 libbz2-dev
 libffi-dev
@@ -21,8 +24,10 @@ locate
 lsb-release
 maildir-utils
 mailutils
+maim
 make
 man-db
+markdown
 msmtp
 pkg-config
 podman
@@ -35,6 +40,7 @@ texlive
 tmux
 vim
 wget
+xclip
 zip
 zlib1g-dev
 zsh

@@ -44,6 +44,9 @@ install-asdf:
 update-asdf:
 	./scripts/asdf/update_asdf_plugins.sh
 
+update-python:
+	pip3 install --upgrade pip
+	pip3 install --upgrade pynvim pytest flake8 black isort nose
 update-vim:
 	pip3 install pynvim flake8 --upgrade
 	vim +'PlugInstall' +qa

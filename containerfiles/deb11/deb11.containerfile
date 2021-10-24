@@ -8,11 +8,10 @@ RUN useradd -ms /bin/bash podmatt
 RUN chsh -s /bin/zsh podmatt
 RUN echo 'podmatt ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 RUN echo 'podmatt:podmatt' | chpasswd
-
 USER podmatt
+WORKDIR /home/podmatt/
 
 COPY  --chown=podmatt:users ./chezmoi-init.sh /home/podmatt/
-WORKDIR /home/podmatt/
 
 # ENTRYPOINT ["sh", "docker-entrypoint.sh"]
 # ENTRYPOINT ["bash"]

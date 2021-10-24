@@ -6,4 +6,4 @@ cd "$DIR"
 
 mkdir -p output
 
-podman run --name emacs-comp --privileged=true -ti -v ./output/:/root/workspace emacs-comp bash
+podman run --name emacs-comp --privileged=true -ti -v ./output/:/home/podmatt emacs-comp bash

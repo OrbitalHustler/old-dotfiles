@@ -668,6 +668,7 @@ mouse_bindings:
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
 key_bindings:
+  - { key: Return,  mods: Alt|Shift,              action: ToggleFullscreen }
   - { key: Return,  mods: Alt,              action: ReceiveChar }
   - { key: 50,      mods: Control,          chars: "\u1285" } # C-, in emacs
   - { key: 51,      mods: Control,          chars: "\u1286" } # C-; in emacs

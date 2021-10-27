@@ -17,7 +17,7 @@
 
 * Theme
 #+begin_src emacs-lisp
-(setq! doom-theme 'doom-monokai-pro)
+(setq! doom-theme 'doom-xcode)
 ;; (use-package! doom-themes
 ;;   :config
 ;;   (if (or (window-system)

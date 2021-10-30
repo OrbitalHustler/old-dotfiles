@@ -37,6 +37,7 @@ ssh
 subversion
 texinfo
 texlive
+texlive-latex-extra
 tmux
 vim
 wget

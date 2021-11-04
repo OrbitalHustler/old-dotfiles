@@ -667,6 +667,7 @@ mouse_bindings:
 #
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
+# Extended keys guide: https://github.com/alexherbo2/alacritty-extended-keys/blob/master/keys.yml
 key_bindings:
   - { key: Return,  mods: Alt|Shift,              action: ToggleFullscreen }
   - { key: Return,  mods: Alt,              action: ReceiveChar }

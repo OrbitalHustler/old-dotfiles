@@ -1,0 +1,57 @@
+{{- $minimal := false -}}
+{{- $headless := false -}}
+{{- $secrets := true -}}
+{{- $workconf := false -}}
+
+{{- $name := "Mathieu Merino" -}}
+{{- $email := "mmerino@outlook.fr" -}}
+{{- $gpg_keyid := "0x7357E344D6C3C795" -}}
+{{- $github_user := "Percee" -}}
+
+{{- if (env "CI") -}}
+{{- $headless = true -}}
+{{- $secrets = false -}}
+{{- end -}}
+
+{{- if (env "SECRETS_OFF") -}}
+{{- $secrets = false -}}
+{{- end -}}
+
+{{- if (env "DOTFILES_MINIMAL") -}}
+{{- $minimal = true -}}
+{{- $secrets = false -}}
+{{- end }}
+
+{{- if (env "WORKCONF") -}}
+{{- $workconf = true -}}
+{{- end -}}
+
+{{- if (env "ASK") }}
+{{- $minimal = promptBool "minimal" -}}
+{{- $workconf = promptBool "work config" -}}
+{{- if $minimal -}}
+{{- $secrets = false -}}
+{{- else }}
+{{- $secrets = promptBool "secrets" -}}
+{{- end }}
+{{- $name := promptString "full name" -}}
+{{- $email := promptString "personal email" -}}
+{{- end }}
+
+data:
+  secrets: {{ $secrets }}
+  headless: {{ $headless }}
+  minimal: {{ $minimal }}
+  name: {{ $name }}
+  email: {{ $email }}
+  gpg_keyid: {{ $gpg_keyid }}
+  github_user: {{ $github_user }}
+  workconf: {{ $workconf }}
+{{- if $secrets }}
+  bitwarden:
+    personal_mail: c553f8b1-f4a3-4220-8b0b-acb500c08fff
+    ssh_pub: 98ebec3b-3a9f-4220-9ae2-acc300fee77f
+    ssh_priv: 0572f760-a184-40f9-bfa2-acc300d9ec5c
+    ssh: eb36407d-787d-4266-9b97-acc3014f98a3
+    pgp_priv: 5bc1d3cd-3332-4c83-ad4a-accc00f68aad
+{{- end -}}

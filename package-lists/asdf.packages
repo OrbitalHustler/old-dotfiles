@@ -4,6 +4,7 @@ direnv latest
 exa latest
 fd latest
 fzf latest
+github-cli latest
 jq latest
 neovim latest
 python 3.9.7

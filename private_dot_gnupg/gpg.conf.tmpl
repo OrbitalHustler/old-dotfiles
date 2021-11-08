@@ -1,0 +1,7 @@
+default-key {{ (bitwarden "item" .bitwarden.pgp_priv).notes }}
+
+require-cross-certification
+
+# Try to use the GnuPG-Agent. With this option, GnuPG first tries to connect to
+# the agent before it asks for a passphrase.
+use-agent

@@ -18,4 +18,10 @@ preview-file-or-dir()
 }
 
 # This is in order to have access to bw executable in tmux
-path+="$HOME/.local/asdf/shims"
+export ASDF_DIR="$HOME/.local/asdf"
+export ASDF_DATA_DIR="$ASDF_DIR"
+export PATH="$HOME/.local/asdf/shims:$PATH"
+
+if [ -f "$HOME/.env-secrets" ]; then
+    source "$HOME/.env-secrets"
+fi

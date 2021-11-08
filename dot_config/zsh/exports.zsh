@@ -71,8 +71,3 @@ export ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-
-if [ -f "$HOME/.env-secrets" ]; then
-    source "$HOME/.env-secrets"
-fi

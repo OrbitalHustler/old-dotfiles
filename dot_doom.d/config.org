@@ -40,9 +40,18 @@
   (after! xclip
     (xclip-mode)))
 #+end_src
+
 * Bug fixes
 #+begin_src emacs-lisp
+;; fixes half-width debug breakpoints icons
 (setq-default left-fringe-width 10)
+
+;; evil-ex-registers doesn't exist, binding it to evil-paste-from-register
+(after! evil
+  (map! :leader
+        (:prefix-map ("i" . "insert")
+         :desc "From evil register" "r" #'evil-paste-from-register
+         :desc "Show evil registers" "R" #'evil-show-registers)))
 #+end_src
 * Company
 TODO Delete once in doom

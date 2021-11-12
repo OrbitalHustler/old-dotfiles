@@ -10,4 +10,4 @@ neovim latest
 python 3.9.7
 ripgrep latest
 shellcheck latest
-zoxide latest
+zoxide latest https://github.com/rinshadka/asdf-zoxide

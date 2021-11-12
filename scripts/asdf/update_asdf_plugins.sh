@@ -9,7 +9,8 @@ PACKAGES="$PKG_DIR/asdf.packages"
 while read -r line; do
     package=$(echo "$line" | awk '{print $1}')
     version=$(echo "$line" | awk '{print $2}')
-    asdf plugin-add "$package"
+    repo_url=$(echo "$line" | awk '{print $3}')
+    asdf plugin-add "$package" "$repo_url"
     asdf install "$package" "$version"
     asdf global "$package" "$version"
 done < "$PACKAGES"

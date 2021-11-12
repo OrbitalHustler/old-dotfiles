@@ -6,6 +6,7 @@ help:
 	@echo 'Management commands for dotfiles:'
 	@echo
 	@echo 'Usage:'
+	@echo '    make first              Do this first!'
 	@echo '    make run                Ensure deps and apply chezmoi.'
 	@echo '    make all                Run all.'
 
@@ -116,7 +117,7 @@ chezmoi-init:
 chezmoi-apply:
 	@echo "Applying chezmoi.."
 	$(MAKE) ensure-dirs #Ensure that ~/.local/tmux/plugins exists for exemple, before downloading tpm
-	$(CHEZMOI) apply -v
+	$(CHEZMOI) apply --verbose --keep-going
 
 all:
 	$(MAKE) ensure-deps

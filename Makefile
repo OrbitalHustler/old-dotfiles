@@ -130,8 +130,11 @@ all:
 	$(MAKE) chezmoi-apply
 	$(MAKE) update
 
-run:
+first:
 	$(MAKE) ensure-deps
 	$(MAKE) chezmoi-init
 	$(MAKE) chezmoi-apply
+
+run:
+	$(MAKE) first
 	$(MAKE) update

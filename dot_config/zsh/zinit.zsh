@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 if [[ ! -f $ZINIT[HOME_DIR]/bin/zinit.zsh ]]; then
-    echo -e "y" | ZINIT_HOME="$ZINIT[HOME_DIR]" sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma-continuum/zinit/master/doc/install.sh)"
+    echo -e "y" | ZINIT_HOME="$ZINIT[HOME_DIR]" sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 fi
 
 source "$ZINIT[HOME_DIR]/bin/zinit.zsh"
@@ -11,10 +11,10 @@ autoload -Uz _zinit
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 zinit light-mode for \
-    zinit-zsh/z-a-rust \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-bin-gem-node
+    zdharma-continuum/z-a-rust \
+    zdharma-continuum/z-a-as-monitor \
+    zdharma-continuum/z-a-patch-dl \
+    zdharma-continuum/z-a-bin-gem-node
 
 ### End of Zinit's installer chunk
 

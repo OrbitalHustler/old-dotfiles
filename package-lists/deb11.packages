@@ -12,6 +12,7 @@ gettext
 glslang-tools
 gnuplot
 graphviz
+guile-3.0
 imagemagick
 isync
 libbz2-dev

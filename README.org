@@ -1,7 +1,12 @@
 #+TITLE: README
 * Installing this configuration
 #+begin_src bash
-BINDIR="$HOME/.local/bin" sh -c "$(curl -fsLS git.io/chezmoi)" -- init Percee
+export BINDIR="$HOME/.local/bin"
+export SECRETS_OFF=1
+export DOTFILES_MINIMAL=1
+export WORKCONF=1
+export HEADLESS=1
+sh -c "$(curl -fsLS git.io/chezmoi)" -- init Percee
 cd "$HOME/.local/share/chezmoi"
 make ensure-dirs ensure-deps chezmoi-apply update
 zsh

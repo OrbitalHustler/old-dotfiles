@@ -47,7 +47,8 @@ update-asdf:
 
 update-python:
 	pip3 install --upgrade pip
-	pip3 install --upgrade pynvim pytest flake8 black isort nose
+	pip3 install --upgrade pynvim pytest flake8 black isort nose podman-compose
+
 update-vim:
 	pip3 install pynvim flake8 --upgrade
 	vim +'PlugInstall' +qa

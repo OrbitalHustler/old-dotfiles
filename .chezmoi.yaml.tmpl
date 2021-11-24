@@ -8,9 +8,8 @@
 {{- $gpg_keyid := "0x7357E344D6C3C795" -}}
 {{- $github_user := "Percee" -}}
 
-{{- if (env "CI") -}}
+{{- if (env "HEADLESS") -}}
 {{- $headless = true -}}
-{{- $secrets = false -}}
 {{- end -}}
 
 {{- if (env "SECRETS_OFF") -}}
@@ -38,6 +37,10 @@
 {{- $email := promptString "personal email" -}}
 {{- end }}
 
+encryption: gpg
+gpg:
+  symmetric: true
+
 data:
   secrets: {{ $secrets }}
   headless: {{ $headless }}
@@ -50,5 +53,8 @@ data:
 {{- if $secrets }}
   bitwarden:
     ssh_key: 9c017493-34b1-475d-a0b6-adda003f870b
-    pgp_priv: 3020461a-d432-446a-a1a4-adda003e54d3
+    pgp_priv_signing: 573e99de-3b95-4fb4-afa4-ade600648bd4
+    pgp_priv_encrypt: a6960156-86bc-4e4e-8179-ade600607808
+    pgp_priv_authenticate: 03526945-8e85-4081-aa7a-ade600606d83
 {{- end -}}
+

@@ -1,0 +1,3 @@
+#+begin_src bash
+podman-compose pull
+#+end_src

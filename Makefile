@@ -1,5 +1,7 @@
 LOGFILE=/tmp/dotfiles.log
 CHEZMOI=~/.local/bin/chezmoi
+export ASDF_DIR=~/.local/asdf
+export ASDF_DATA_DIR=~/.local/asdf
 
 default: run
 help:
@@ -43,7 +45,7 @@ install-asdf:
 	./scripts/asdf/install_asdf.sh
 
 update-asdf:
-	ASDF_DIR="$(HOME)/.local/asdf" ASDF_DATA_DIR="$(HOME)/.local/asdf" ./scripts/asdf/update_asdf_plugins.sh
+	./scripts/asdf/update_asdf_plugins.sh
 
 update-python:
 	pip3 install --upgrade pip

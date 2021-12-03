@@ -123,6 +123,7 @@ chezmoi-apply:
 	$(CHEZMOI) apply --verbose --keep-going
 
 all:
+	$(MAKE) ensure-dirs
 	$(MAKE) ensure-deps
 	$(MAKE) start-services
 	$(MAKE) install-env
@@ -134,6 +135,7 @@ all:
 	$(MAKE) update
 
 first:
+	$(MAKE) ensure-dirs
 	$(MAKE) ensure-deps
 	$(MAKE) chezmoi-init
 	$(MAKE) chezmoi-apply

@@ -1,12 +1,16 @@
 {{- $minimal := false -}}
 {{- $headless := false -}}
 {{- $secrets := true -}}
+{{- $default_user := true -}}
 {{- $workconf := false -}}
 
+{{- if (env "DEFAULT_USER_OFF") -}}
+{{- else }}
 {{- $name := "Mathieu Merino" -}}
 {{- $email := "mmerino@outlook.fr" -}}
 {{- $gpg_keyid := "0x7357E344D6C3C795" -}}
 {{- $github_user := "Percee" -}}
+{{- end -}}
 
 {{- if (env "HEADLESS") -}}
 {{- $headless = true -}}

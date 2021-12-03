@@ -4,16 +4,17 @@
 {{- $default_user := true -}}
 {{- $workconf := false -}}
 
-{{- if (env "DEFAULT_USER_OFF") -}}
 {{- $name := "user_name" -}}
 {{- $email := "user_email" -}}
 {{- $gpg_keyid := "user_gpg_keyid" -}}
 {{- $github_user := "github_user" -}}
+
+{{- if (env "DEFAULT_USER_OFF") -}}
 {{- else }}
-{{- $name := "Mathieu Merino" -}}
-{{- $email := "mmerino@outlook.fr" -}}
-{{- $gpg_keyid := "0x7357E344D6C3C795" -}}
-{{- $github_user := "Percee" -}}
+{{- $name = "Mathieu Merino" -}}
+{{- $email = "mmerino@outlook.fr" -}}
+{{- $gpg_keyid = "0x7357E344D6C3C795" -}}
+{{- $github_user = "Percee" -}}
 {{- end -}}
 
 {{- if (env "HEADLESS") -}}

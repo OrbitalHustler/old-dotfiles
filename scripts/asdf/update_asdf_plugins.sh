@@ -39,24 +39,22 @@ function asdf_install_package_version_if_needed() {
     fi
 }
 
+fzf_installed_version="unknown"
+
 while read -r line; do
     package=$(echo "$line" | awk '{print $1}')
     version=$(echo "$line" | awk '{print $2}')
     repo_url=$(echo "$line" | awk '{print $3}')
     asdf_install_or_update_plugin $package
     asdf_install_package_version_if_needed $package $version
+    if [[ $package == "fzf" ]]; then
+        fzf_installed_version=$version
+    fi
 done < "$PACKAGES"
 
 # Regenerate asdf-direnv cached environment
 touch "$HOME/.envrc"
 
 echo "$(ansi --green Launching fzf install script)"
-FZF="$HOME/.local/fzf"
-if [ -L "$FZF" ]; then
-    rm "$FZF"
-fi
-
-if [ ! -f "$FZF" ]; then
-    ln -s "$(dirname "$(dirname "$(asdf which fzf)")")" "$FZF"
-    "$FZF/install" --completion --key-bindings --no-update-rc
-fi
+FZF_INSTALL_DIR="$HOME/.local/asdf/installs/fzf/$fzf_installed_version"
+"$FZF_INSTALL_DIR/install" --completion --key-bindings --no-update-rc

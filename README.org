@@ -2,6 +2,7 @@
 * Installing this configuration
 #+begin_src bash
 export BINDIR="$HOME/.local/bin"
+export DEFAULT_USER_OFF=1
 export SECRETS_OFF=1
 export DOTFILES_MINIMAL=1
 export WORKCONF=1
@@ -26,3 +27,7 @@ podman start -ia deb11
 podman kill deb11
 podman rm deb11
 #+end_src
+
+* Things to do
+
+** TODO Dont install python in asdf when MINIMAL is set

@@ -1,7 +1,7 @@
 LOGFILE=/tmp/dotfiles.log
 CHEZMOI=~/.local/bin/chezmoi
-export ASDF_DIR=~/.local/asdf
-export ASDF_DATA_DIR=~/.local/asdf
+export ASDF_DIR=$$HOME/.local/asdf
+export ASDF_DATA_DIR=$$HOME/.local/asdf
 
 default: run
 help:

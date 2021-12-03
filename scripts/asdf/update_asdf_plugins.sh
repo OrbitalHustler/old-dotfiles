@@ -59,3 +59,5 @@ touch "$HOME/.envrc"
 echo "$(ansi --green Launching fzf install script)"
 FZF_INSTALL_DIR="$HOME/.local/asdf/installs/fzf/$fzf_installed_version"
 "$FZF_INSTALL_DIR/install" --completion --key-bindings --no-update-rc
+rm "$HOME/.local/fzf"
+ln -s "$FZF_INSTALL_DIR" "$HOME/.local/fzf"

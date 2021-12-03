@@ -8,3 +8,9 @@ fonts/
 install.sh
 package-lists/
 scripts/
+
+{{- if not .secrets }}
+.ssh/id_rsa
+.ssh/id_rsa.pub
+.gnupg/private-keys-v1.d/
+{{- end }}

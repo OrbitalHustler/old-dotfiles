@@ -5,10 +5,10 @@
 {{- $workconf := false -}}
 
 {{- if (env "DEFAULT_USER_OFF") -}}
-{{- $name := "" -}}
-{{- $email := "" -}}
-{{- $gpg_keyid := "" -}}
-{{- $github_user := "" -}}
+{{- $name := "user_name" -}}
+{{- $email := "user_email" -}}
+{{- $gpg_keyid := "user_gpg_keyid" -}}
+{{- $github_user := "github_user" -}}
 {{- else }}
 {{- $name := "Mathieu Merino" -}}
 {{- $email := "mmerino@outlook.fr" -}}

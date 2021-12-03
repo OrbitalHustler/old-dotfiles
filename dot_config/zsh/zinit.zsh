@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
 
 if [[ ! -f $ZINIT[HOME_DIR]/bin/zinit.zsh ]]; then
-    echo -e "y" | ZINIT_HOME="$ZINIT[HOME_DIR]" sh -c "$(curl -fsSL https://git.io/zinit-install)"
+    echo -e "y" | sh -c "$(curl -fsSL https://git.io/zinit-install)"
 fi
 
-source "$ZINIT[HOME_DIR]/bin/zinit.zsh"
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 

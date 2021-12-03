@@ -10,7 +10,7 @@ fpath=("$HOME/.config/zsh/completions" $fpath)
 
 # Zinit
 declare -A ZINIT
-ZINIT[HOME_DIR]="$HOME/.local/zinit"
+# ZINIT[HOME_DIR]="$HOME/.local/zinit"
 
 export PROJECT_HOME="$HOME/workspace"
 export WORKSPACE="$PROJECT_HOME"

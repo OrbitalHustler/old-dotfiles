@@ -43,7 +43,7 @@ install-asdf:
 	./scripts/asdf/install_asdf.sh
 
 update-asdf:
-	./scripts/asdf/update_asdf_plugins.sh
+	ASDF_DIR="$(HOME)/.local/asdf" ASDF_DATA_DIR="$(HOME)/.local/asdf" ./scripts/asdf/update_asdf_plugins.sh
 
 update-python:
 	pip3 install --upgrade pip

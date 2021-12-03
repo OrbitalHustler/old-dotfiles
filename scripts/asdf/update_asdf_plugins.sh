@@ -47,6 +47,7 @@ while read -r line; do
     repo_url=$(echo "$line" | awk '{print $3}')
     asdf_install_or_update_plugin $package
     asdf_install_package_version_if_needed $package $version
+    asdf global $package $version
     if [[ $package == "fzf" ]]; then
         fzf_installed_version=$version
     fi

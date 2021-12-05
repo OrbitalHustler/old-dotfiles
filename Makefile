@@ -1,5 +1,6 @@
 LOGFILE=/tmp/dotfiles.log
 CHEZMOI=~/.local/bin/chezmoi
+PIP=~/.local/asdf/shims/pip3
 export ASDF_DIR=${HOME}/.local/asdf
 export ASDF_DATA_DIR=${HOME}/.local/asdf
 
@@ -47,8 +48,8 @@ update-asdf:
 	./scripts/asdf/update_asdf_plugins.sh
 
 update-python:
-	pip3 install --upgrade pip
-	pip3 install --upgrade pynvim pytest flake8 black isort nose podman-compose
+	$(PIP3) install --upgrade pip
+	$(PIP3) install --upgrade pynvim pytest flake8 black isort nose podman-compose
 
 update-vim:
 	pip3 install pynvim flake8 --upgrade

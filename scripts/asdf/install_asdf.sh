@@ -8,6 +8,6 @@ ASDF_DIR=${ASDF_DIR:="$HOME/.local/asdf"}
 if [ ! -f "$ASDF_DIR/asdf.sh" ]; then
     git clone https://github.com/asdf-vm/asdf.git "$ASDF_DIR" --branch v0.8.1
     . "$ASDF_DIR/asdf.sh"
-	asdf update
+	# asdf update
     # . "$DIR/update_asdf_plugins.sh"
 fi

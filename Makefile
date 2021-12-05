@@ -60,6 +60,7 @@ update:
 	$(MAKE) update-asdf
 	$(MAKE) update-vim
 	$(MAKE) update-zinit
+	$(MAKE) update-python
 
 update-zsh-completions:
 	echo "Not yet implemented"
@@ -138,7 +139,7 @@ first:
 	$(MAKE) ensure-deps
 	$(MAKE) chezmoi-init
 	$(MAKE) chezmoi-apply
-	$(MAKE) update-zinit
+	$(MAKE) update
 
 run:
 	$(MAKE) first

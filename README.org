@@ -31,3 +31,4 @@ podman rm deb11
 * Things to do
 
 ** TODO Dont install python in asdf when MINIMAL is set
+** TODO Make scripts keep running when you dont have sudo

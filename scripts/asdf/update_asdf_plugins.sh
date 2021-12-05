@@ -63,7 +63,6 @@ echo "$(ansi --green Launching fzf install script)"
 FZF_INSTALL_DIR="$HOME/.local/asdf/installs/fzf/$fzf_installed_version"
 "$FZF_INSTALL_DIR/install" --completion --key-bindings --no-update-rc
 FZF_LINK="$HOME/.local/fzf"
-if [ -f "$FZF_LINK" ]; then
-    rm -rf "$FZF_LINK"
-fi
+
+rm -rf "$FZF_LINK"
 ln -s "$FZF_INSTALL_DIR" "$HOME/.local/fzf"

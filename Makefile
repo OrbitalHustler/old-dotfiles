@@ -111,7 +111,6 @@ ensure-deps:
 	$(MAKE) install-deps
 	$(MAKE) install-chezmoi
 	$(MAKE) install-asdf
-	$(MAKE) update-zsh
 
 chezmoi-init:
 	@echo "Initializing chezmoi..."
@@ -139,6 +138,7 @@ first:
 	$(MAKE) ensure-deps
 	$(MAKE) chezmoi-init
 	$(MAKE) chezmoi-apply
+	$(MAKE) update-zinit
 
 run:
 	$(MAKE) first

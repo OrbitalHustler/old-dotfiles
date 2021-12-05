@@ -52,16 +52,15 @@ update-python:
 	$(PIP3) install --upgrade pynvim pytest flake8 black isort nose podman-compose
 
 update-vim:
-	$(PIP3) install pynvim flake8 --upgrade
 	vim +'PlugInstall' +qa
 	vim +'UpdateRemotePlugins' +qa
 
 update:
 	$(MAKE) update-asdf
+	$(MAKE) update-python
 	$(MAKE) update-tmux
 	$(MAKE) update-vim
 	$(MAKE) update-zinit
-	$(MAKE) update-python
 
 update-zsh-completions:
 	echo "Not yet implemented"

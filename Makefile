@@ -52,7 +52,7 @@ update-python:
 	$(PIP3) install --upgrade pynvim pytest flake8 black isort nose podman-compose
 
 update-vim:
-	pip3 install pynvim flake8 --upgrade
+	$(PIP3) install pynvim flake8 --upgrade
 	vim +'PlugInstall' +qa
 	vim +'UpdateRemotePlugins' +qa
 

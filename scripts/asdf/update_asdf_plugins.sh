@@ -4,6 +4,9 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 . "$DIR/../base.sh"
 . "$DIR/../ansi"
 
+ASDF_DIR=${ASDF_DIR:="$HOME/.local/asdf"}
+. "$ASDF_DIR/asdf.sh"
+
 PKG_DIR="$CHEZMOI_DIR/package-lists/"
 PACKAGES="$PKG_DIR/asdf.packages"
 

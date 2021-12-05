@@ -57,8 +57,8 @@ update-vim:
 	vim +'UpdateRemotePlugins' +qa
 
 update:
-	$(MAKE) update-tmux
 	$(MAKE) update-asdf
+	$(MAKE) update-tmux
 	$(MAKE) update-vim
 	$(MAKE) update-zinit
 	$(MAKE) update-python
@@ -109,10 +109,10 @@ ensure-dirs:
 
 ensure-deps:
 	@echo "Ensuring dependencies.."
-	$(MAKE) install-fonts
 	$(MAKE) install-deps
-	$(MAKE) install-chezmoi
 	$(MAKE) install-asdf
+	$(MAKE) install-fonts
+	$(MAKE) install-chezmoi
 
 chezmoi-init:
 	@echo "Initializing chezmoi..."

@@ -1,4 +1,4 @@
-LOGFILE=/tmp/dotfiles.log
+LOGFILE=/tmp/dotfiles-${USER}.log
 CHEZMOI=~/.local/bin/chezmoi
 PIP=~/.local/asdf/shims/pip3
 export ASDF_DIR=${HOME}/.local/asdf

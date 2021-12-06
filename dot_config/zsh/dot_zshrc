@@ -12,11 +12,11 @@ fi
 
 . $DIR/exports.zsh
 
-[ -f "$DIR/direnv-zhook.zsh" ] && source "$DIR/direnv-zhook.zsh"
-
 . $DIR/zinit.zsh
 . $DIR/init.zsh
 . $DIR/history.zsh
+
+[ -f "$DIR/direnv-zhook.zsh" ] && source "$DIR/direnv-zhook.zsh"
 
 . $DIR/asdf_direnv.zsh
 . $DIR/aliases.zsh

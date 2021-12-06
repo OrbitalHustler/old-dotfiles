@@ -166,7 +166,7 @@ noremap <Right> <NOP>
 " neomake
 let g:neomake_open_list = 2 " open list automatically
 " enable linters
-call neomake#configure#automake('nrwi', 500)
+silent! call neomake#configure#automake('nrwi', 500)
 
 augroup my_neomake_qf
     autocmd!

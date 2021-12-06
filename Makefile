@@ -52,8 +52,8 @@ update-python:
 	$(PIP) install --upgrade pynvim pytest flake8 black isort nose podman-compose
 
 update-vim:
-	vim +'PlugInstall' +qa
-	vim +'UpdateRemotePlugins' +qa
+	vim +'PlugInstall' +qall
+	vim +'UpdateRemotePlugins' +qall
 
 update:
 	$(MAKE) update-asdf

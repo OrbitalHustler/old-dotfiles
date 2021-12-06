@@ -77,11 +77,13 @@ unalias zi
 zinit snippet OMZ::plugins/zoxide # so the function "zi" replaces the "zinit" alias "zi" properly
 
 # Direnv hook into zsh
-# https://zdharma.github.io/zinit/wiki/Direnv-explanation/
-zinit from"gh-r" as"program" mv"direnv* -> direnv" \
-    atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
-    pick"direnv" src="zhook.zsh" for \
-        direnv/direnv
+# https://zdharma-continuum.github.io/zinit/wiki/Direnv-explanation/
+# NOTE: currently disabled, we generate the hook at direnv installation time (see update_asdf_plugins.sh)
+
+# zinit from"gh-r" as"program" mv"direnv* -> direnv" \
+#     atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
+#     pick"direnv" src="zhook.zsh" for \
+#         direnv/direnv
 
 # LS_COLORS managed by zinit
 # https://zdharma.github.io/zinit/wiki/LS_COLORS-explanation/

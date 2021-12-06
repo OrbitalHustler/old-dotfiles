@@ -140,9 +140,6 @@ first:
 	$(MAKE) chezmoi-init
 	$(MAKE) chezmoi-apply
 	$(MAKE) update
-# FIXME remove once https://github.com/zdharma-continuum/zinit/issues/129 is fixed
-	rm -rf ~/.local/share/zinit/plugins
-	$(MAKE) update-zinit
 
 run:
 	$(MAKE) first

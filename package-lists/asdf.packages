@@ -1,11 +1,11 @@
 bat latest
-bitwarden latest
+bitwarden v1.19.1
 direnv latest
 exa latest
 fd latest
-fzf latest
-github-cli latest
-jq latest
+fzf 0.28.0
+github-cli 2.3.0
+jq 1.6
 neovim 0.5.1
 python 3.9.7
 ripgrep latest

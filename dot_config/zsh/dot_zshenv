@@ -3,25 +3,27 @@ skip_global_compinit=1
 preview-file-or-dir()
 {
   if [ -d "$1" ]; then
-    if (( ${+commands[exa]} )); then
-      exa -1 --color=always "$1"
-    else
-      ls --color=always "$1"
-    fi
+  if (( ${+commands[exa]} )); then
+  exa -1 --color=always "$1"
+  else
+    ls --color=always "$1"
+  fi
   elif [ -f "$1" ]; then
-    if (( ${+commands[bat]} )); then
-      bat --color=always --style=plain "$1"
-    else
-      less "$1"
-    fi
+  if (( ${+commands[bat]} )); then
+  bat --color=always --style=plain "$1"
+  else
+    less "$1"
+  fi
   fi
 }
 
 # This is in order to have access to bw executable in tmux
-export ASDF_DIR="$HOME/.local/asdf"
-export ASDF_DATA_DIR="$ASDF_DIR"
-export PATH="$HOME/.local/asdf/shims:$PATH"
+if [[ ! -o interactive ]]; then
+  export ASDF_DIR="$HOME/.local/asdf"
+  export ASDF_DATA_DIR="$ASDF_DIR"
+  export PATH="$PATH:$HOME/.local/asdf/shims"
+fi
 
 if [ -f "$HOME/.env-secrets" ]; then
-    source "$HOME/.env-secrets"
+source "$HOME/.env-secrets"
 fi

@@ -28,6 +28,13 @@ function asdf_get_latest_package_version_available() {
     echo $latest_version
 }
 
+function pre_fzf_install_hook() {
+    fzf="$HOME/.local/fzf"
+    fzf_shim="$HOME/.local/asdf/shims/fzf"
+    echo "$(ansi --green Removing $fzf and $fzf_shim)"
+    rm -rf "$fzf" "$fzf_shim"
+}
+
 function post_fzf_install_hook() {
     fzf_installed_version=$1
     echo "$(ansi --green Launching fzf install script)"
@@ -35,7 +42,6 @@ function post_fzf_install_hook() {
     "$FZF_INSTALL_DIR/install" --completion --key-bindings --no-update-rc
     FZF_LINK="$HOME/.local/fzf"
 
-    rm -rf "$FZF_LINK"
     ln -s "$FZF_INSTALL_DIR" "$HOME/.local/fzf"
 }
 
@@ -45,6 +51,11 @@ function post_direnv_install_hook() {
     DIRENV_ZSH_HOOK_FILE="$HOME/.config/zsh/direnv-zhook.zsh"
     echo "$(ansi --green Generating direnv hook for zsh in $DIRENV_ZSH_HOOK_FILE)"
     "$DIRENV_BIN" hook zsh > "$DIRENV_ZSH_HOOK_FILE"
+}
+
+function pre_package_install_hook() {
+    func_name=pre_$1_install_hook
+    type $func_name &>/dev/null && $func_name $2
 }
 
 function post_package_install_hook() {
@@ -59,13 +70,16 @@ function asdf_install_package_version_if_needed() {
         version=$(asdf_get_latest_package_version_available $package)
     fi
     installed_versions=$(asdf list $package)
+
+
     if [[ ! $installed_versions == *"$version"* ]]; then
+        pre_package_install_hook $package $version
         echo "$(ansi --yellow Installing $package $version)"
         asdf install $package $version
+        post_package_install_hook $package $version
     else
         echo "$(ansi --green $package $version is already installed)"
     fi
-    post_package_install_hook $package $version
 }
 
 while read -r line; do

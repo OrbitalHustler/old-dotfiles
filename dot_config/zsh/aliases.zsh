@@ -61,3 +61,5 @@ dotfiles-update() { chezmoi cd && ./install.sh; }
 function dotf {
 (cd $HOME/dotfiles && make "$1")
 }
+
+alias tmux="tmux -u"

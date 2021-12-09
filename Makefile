@@ -49,7 +49,7 @@ update-asdf:
 
 update-python:
 	$(PIP) install --upgrade pip
-	$(PIP) install --upgrade pynvim pytest flake8 black isort nose podman-compose
+	$(PIP) install --upgrade pynvim pytest pylint flake8 black isort nose podman-compose
 
 update-vim:
 	vim +'PlugInstall' +qall

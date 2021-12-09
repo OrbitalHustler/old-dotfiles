@@ -62,6 +62,7 @@ fi
 
 # Don't autostart there but in .zshrc, where we pass the -u flag for unicode
 export ZSH_TMUX_AUTOSTART=false
+export ZSH_TMUX_UNICODE=true
 
 export ZSH_HIGHLIGHT_MAXLENGTH=512
 export ZVM_VI_INSERT_ESCAPE_BINDKEY=jk

@@ -412,6 +412,10 @@ This is a workaround for[[https://github.com/hlissner/doom-emacs/issues/2991][ t
 #+begin_src emacs-lisp
 (add-to-list 'auto-mode-alist '("\\.containerfile$" . dockerfile-mode))
 #+end_src
+* chezmoi
+#+begin_src emacs-lisp
+(add-to-list 'auto-mode-alist '("\\.yaml.tmpl" . yaml-mode))
+#+end_src
 
 * Things to add when I have time & motivation
 [[https://list.orgmode.org/20200531212322.GF23478@volibear/t/][Solution for contact syncing/editing]]

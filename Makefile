@@ -146,6 +146,7 @@ first:
 	$(MAKE) ensure-deps
 	$(MAKE) chezmoi-init
 	$(MAKE) chezmoi-apply
+	$(MAKE) install-env
 	$(MAKE) update
 
 run:

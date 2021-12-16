@@ -1,8 +1,13 @@
+SHELL := /bin/bash
+
 LOGFILE=/tmp/dotfiles-${USER}.log
 CHEZMOI=~/.local/bin/chezmoi
 PIP=~/.local/asdf/shims/pip3
 export ASDF_DIR=${HOME}/.local/asdf
 export ASDF_DATA_DIR=${HOME}/.local/asdf
+
+ANSI=@source scripts/ansi && ansi
+MAKE_SECTION=$(ANSI) --yellow ">>>>>"
 
 default: run
 help:
@@ -135,6 +140,7 @@ all:
 	$(MAKE) update
 
 first:
+	$(MAKE_SECTION) Running first time setup
 	$(MAKE) ensure-dirs
 	$(MAKE) ensure-deps
 	$(MAKE) chezmoi-init

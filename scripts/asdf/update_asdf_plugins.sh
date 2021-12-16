@@ -39,10 +39,10 @@ function post_fzf_install_hook() {
     fzf_installed_version=$1
     echo "$(ansi --green Launching fzf install script)"
     FZF_INSTALL_DIR="$ASDF_INSTALL_DIR/fzf/$fzf_installed_version"
-    "$FZF_INSTALL_DIR/install" --completion --key-bindings --no-update-rc
+    # "$FZF_INSTALL_DIR/install" --completion --key-bindings --no-update-rc
     FZF_LINK="$HOME/.local/fzf"
 
-    ln -s "$FZF_INSTALL_DIR" "$HOME/.local/fzf"
+    ln -s "$FZF_INSTALL_DIR" "$FZF_LINK"
 }
 
 function post_direnv_install_hook() {

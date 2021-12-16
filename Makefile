@@ -56,15 +56,16 @@ update-python:
 	$(PIP) install --upgrade pip wheel
 	$(PIP) install --upgrade pynvim pytest pylint flake8 black isort nose podman-compose
 
-update-vim:
-	vim +'PlugInstall' +qall
-	vim +'UpdateRemotePlugins' +qall
+update-nvim:
+	vim +'DoomUpdate' +qall
+#    vim +'PlugInstall' +qall
+#    vim +'UpdateRemotePlugins' +qall
 
 update:
 	$(MAKE) update-asdf
 	$(MAKE) update-python
 	$(MAKE) update-tmux
-	$(MAKE) update-vim
+	$(MAKE) update-nvim
 	$(MAKE) update-zinit
 
 update-zsh-completions:

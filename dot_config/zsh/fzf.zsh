@@ -1,7 +1,7 @@
 FZF_LINK="$HOME/.local/fzf"
 # Setup fzf
 # ---------
-path=("$FZF_LINK/bin" $path)
+# path=("$FZF_LINK/bin" $path)
 
 # Auto-completion
 # ---------------

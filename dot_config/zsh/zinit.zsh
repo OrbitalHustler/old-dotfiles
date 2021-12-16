@@ -73,8 +73,6 @@ zinit load Aloxaf/fzf-tab
 zinit snippet OMZ::plugins/fzf # after fzf-tab
 zinit load davidde/git
 zinit snippet OMZ::plugins/common-aliases # if turbo, replaces my aliases
-unalias zi
-zinit snippet OMZ::plugins/zoxide # so the function "zi" replaces the "zinit" alias "zi" properly
 
 # Direnv hook into zsh
 # https://zdharma-continuum.github.io/zinit/wiki/Direnv-explanation/

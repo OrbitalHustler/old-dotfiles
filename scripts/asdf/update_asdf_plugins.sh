@@ -11,6 +11,10 @@ ASDF_INSTALL_DIR="$ASDF_DIR/installs"
 PKG_DIR="$CHEZMOI_DIR/package-lists/"
 PACKAGES="$PKG_DIR/asdf.packages"
 
+ZSH_DIR="$HOME/.config/zsh"
+ZSH_DIRENV_HOOK_FILE="$ZSH_DIR/direnv-zhook.zsh"
+ZSH_ZOXIDE_HOOK_FILE="$ZSH_DIR/zoxide-zhook.zsh"
+
 installed_plugins_list=$(asdf plugin list)
 function asdf_install_or_update_plugin() {
     plugin=$1
@@ -48,9 +52,8 @@ function post_fzf_install_hook() {
 function post_direnv_install_hook() {
     direnv_installed_version=$1
     DIRENV_BIN="$ASDF_INSTALL_DIR/direnv/$direnv_installed_version/bin/direnv"
-    DIRENV_ZSH_HOOK_FILE="$HOME/.config/zsh/direnv-zhook.zsh"
     echo "$(ansi --green Generating direnv hook for zsh in $DIRENV_ZSH_HOOK_FILE)"
-    "$DIRENV_BIN" hook zsh > "$DIRENV_ZSH_HOOK_FILE"
+    "$DIRENV_BIN" hook zsh > "$ZSH_DIRENV_HOOK_FILE"
 }
 
 function pre_package_install_hook() {
@@ -93,6 +96,16 @@ while read -r line; do
     echo "$(ansi --yellow ====$package done====)"
     echo ""
 done < "$PACKAGES"
+
+echo "$(ansi --yellow Checking for missing zsh hook files...)"
+if [ ! -f "$ZSH_DIRENV_HOOK_FILE" ]; then
+    echo "$(ansi --yellow Direnv hook file is missing, creating it in $ZSH_DIRENV_HOOK_FILE...)"
+    direnv hook zsh > "$ZSH_DIRENV_HOOK_FILE"
+fi
+if [ ! -f "$ZSH_ZOXIDE_HOOK_FILE" ]; then
+    echo "$(ansi --yellow Zoxide hook file is missing, creating it in $ZSH_ZOXIDE_HOOK_FILE...)"
+    zoxide init zsh > "$ZSH_ZOXIDE_HOOK_FILE"
+fi
 
 # Regenerate asdf-direnv cached environment
 touch "$HOME/.envrc"

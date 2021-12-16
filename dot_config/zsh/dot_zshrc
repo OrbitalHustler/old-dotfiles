@@ -18,6 +18,8 @@ fi
 . $DIR/asdf_direnv.zsh
 . $DIR/aliases.zsh
 
+[ -f "$DIR/zoxide-zhook.zsh" ] && source "$DIR/zoxide-zhook.zsh"
+
 [ -f ~/.aliasesrc ] && source ~/.aliasesrc
 [ -f ~/.localrc ] && source ~/.localrc
 
@@ -26,7 +28,7 @@ fi
 
 # fzf and fancy-ctrl-z needs to be loaded after zsh-vi-mode
 # zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
-zvm_after_init_commands+=('[ -f ~/.config/zsh/fzf.zsh ] && source ~/.config/zsh/fzf.zsh')
+zvm_after_init_commands+=("[ -f \"$DIR/fzf.zsh\" ] && source \"$DIR/fzf.zsh\"")
 zvm_after_init_commands+=("bindkey '^Z' fancy-ctrl-z")
 
 # Tmux autostart

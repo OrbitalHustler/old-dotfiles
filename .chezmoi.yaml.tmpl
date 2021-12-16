@@ -1,7 +1,7 @@
 {{- $minimal := false -}}
 {{- $headless := false -}}
-{{- $secrets := true -}}
-{{- $default_user := true -}}
+{{- $secrets := false -}}
+{{- $default_user := false -}}
 {{- $workconf := false -}}
 
 {{- $name := "user_name" -}}
@@ -9,20 +9,20 @@
 {{- $gpg_keyid := "user_gpg_keyid" -}}
 {{- $github_user := "github_user" -}}
 
-{{- if (env "DEFAULT_USER_OFF") -}}
-{{- else }}
+{{- if (env "PERCEE") -}}
 {{- $name = "Mathieu Merino" -}}
 {{- $email = "mmerino@outlook.fr" -}}
 {{- $gpg_keyid = "0x7357E344D6C3C795" -}}
 {{- $github_user = "Percee" -}}
+{{- else }}
 {{- end -}}
 
 {{- if (env "HEADLESS") -}}
 {{- $headless = true -}}
 {{- end -}}
 
-{{- if (env "SECRETS_OFF") -}}
-{{- $secrets = false -}}
+{{- if (env "SECRETS") -}}
+{{- $secrets = true -}}
 {{- end -}}
 
 {{- if (env "DOTFILES_MINIMAL") -}}

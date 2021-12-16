@@ -21,6 +21,12 @@ if [ ! -f "$EMACS_PATH/bin/doom" ]; then
 # "$EMACS_PATH/bin/doom" -y sync -e
 fi
 
+NVIM_PATH="$HOME/.config/nvim"
+if [ ! -f "$NVIM_PATH/init.lua" ]; then
+    rm -rf "$NVIM_PATH"
+    git clone --depth 1 https://github.com/NTBBloodbath/doom-nvim.git "$NVIM_PATH"
+fi
+
 
 # NOTES_PATH="$HOME/.local/bin/notes"
 # if [ ! -f "$NOTES_PATH" ]; then

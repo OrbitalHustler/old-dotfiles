@@ -32,6 +32,7 @@ markdown
 msmtp
 pkg-config
 podman
+slirp4netns
 source-highlight
 sqlite3
 ssh

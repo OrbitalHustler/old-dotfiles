@@ -6,7 +6,7 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 . "$DIR/ansi"
 
 ansi --yellow "Ensuring required directories exist.."
-mkdir -pv $HOME/workspace/opt
+mkdir -pv $HOME/workspace
 
 mkdir -pv $HOME/org/roam
 

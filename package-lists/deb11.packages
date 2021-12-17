@@ -18,7 +18,11 @@ isync
 libbz2-dev
 libffi-dev
 libgccjit0
+libgif7
+libm17n-0
+libotf0
 libreadline-dev
+librsvg2-2
 libsqlite3-dev
 libssl-dev
 locate

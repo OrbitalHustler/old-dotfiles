@@ -1,2 +1,2 @@
 mkdir output
-podman run --name emacs-comp --privileged=true -ti -v ./output/:/root/workspace emacs-comp bash
+./podman-run.sh /home/matt/.local/opt/emacs-28.0.90-nativecomp-lucid

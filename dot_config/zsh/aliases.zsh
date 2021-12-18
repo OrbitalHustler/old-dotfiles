@@ -8,6 +8,8 @@ alias cmcd="cd $HOME/.local/share/chezmoi"
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
+# git commit quic
+alias gcq='git commit -m "update"'
 
 
 _pager="less"

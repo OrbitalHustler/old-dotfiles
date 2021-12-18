@@ -10,6 +10,7 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 # git commit quic
 alias gcq='git commit -m "update"'
+alias gcqp='git commit -m "update" && git push'
 
 
 _pager="less"

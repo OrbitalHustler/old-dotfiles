@@ -1,0 +1,18 @@
+export ASDF_DIR="$HOME/.local/asdf"
+
+# My custom chezmoi env
+{{- if .secrets }}
+export CHEZMOI_SECRETS=1
+{{- end}}
+{{- if .name }}
+export CHEZMOI_NAME={{.name}}
+{{- end}}
+{{- if .email }}
+export CHEZMOI_EMAIL={{.email}}
+{{- end}}
+{{- if .headless }}
+export CHEZMOI_HEADLESS=1
+{{- end}}
+{{- if .minimal }}
+export CHEZMOI_MINIMAL=1
+{{- end}}

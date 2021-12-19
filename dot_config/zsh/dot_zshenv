@@ -24,7 +24,7 @@ if [[ ! -o interactive ]]; then
   export PATH="$PATH:$HOME/.local/asdf/shims"
 fi
 
-if [ -f "$HOME/.env-secrets" ]; then
+if [ -f "$HOME/.env-secrets.gpg" ]; then
   # . "$HOME/.env-secrets"
   . <(gpg -qd "$HOME/.env-secrets.gpg")
 fi

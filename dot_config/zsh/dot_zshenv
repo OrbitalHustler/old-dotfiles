@@ -25,5 +25,6 @@ if [[ ! -o interactive ]]; then
 fi
 
 if [ -f "$HOME/.env-secrets" ]; then
-source "$HOME/.env-secrets"
+  # . "$HOME/.env-secrets"
+  . <(gpg -qd "$HOME/.env-secrets.gpg")
 fi

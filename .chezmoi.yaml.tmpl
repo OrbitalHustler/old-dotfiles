@@ -3,11 +3,44 @@
 {{- $secrets := false -}}
 {{- $default_user := false -}}
 {{- $workconf := false -}}
+{{- $name := false -}}
+{{- $email := false -}}
 
-{{- $name := "user_name" -}}
-{{- $email := "user_email" -}}
+{{- if (env "CHEZMOI_SECRETS") }}
+{{- $secrets = true }}
+{{- else }}
+{{- $secrets = false }}
+{{- end }}
+{{- if (env "CHEZMOI_NAME") }}
+{{- $name = (env "CHEZMOI_NAME") }}
+{{- else }}
+{{- $name = promptString "name"}}
+{{- end }}
+{{- if (env "CHEZMOI_EMAIL") }}
+{{- $email = (env "CHEZMOI_EMAIL") }}
+{{- else }}
+{{- $email = promptString "email" }}
+{{- end }}
+{{- if (env "CHEZMOI_HEADLESS") }}
+{{- $headless = true }}
+{{- else }}
+{{- if (env "ASK") }}
+{{- $headless = promptBool "headless" -}}
+{{- else }}
+{{- $headless = false }}
+{{- end }}
+{{- end }}
+{{- if (env "CHEZMOI_MINIMAL") }}
+{{- $minimal = true }}
+{{- else }}
+{{- if (env "ASK") }}
+{{- $minimal = promptBool "minimal" -}}
+{{- else }}
+{{- $minimal = false }}
+{{- end }}
+{{- end }}
+
 {{- $gpg_keyid := "user_gpg_keyid" -}}
-{{- $github_user := "github_user" -}}
 
 {{- if (env "PERCEE") -}}
 {{- $name = "Mathieu Merino" -}}
@@ -16,35 +49,6 @@
 {{- $github_user = "Percee" -}}
 {{- else }}
 {{- end -}}
-
-{{- if (env "HEADLESS") -}}
-{{- $headless = true -}}
-{{- end -}}
-
-{{- if (env "SECRETS") -}}
-{{- $secrets = true -}}
-{{- end -}}
-
-{{- if (env "DOTFILES_MINIMAL") -}}
-{{- $minimal = true -}}
-{{- $secrets = false -}}
-{{- end }}
-
-{{- if (env "WORKCONF") -}}
-{{- $workconf = true -}}
-{{- end -}}
-
-{{- if (env "ASK") }}
-{{- $minimal = promptBool "minimal" -}}
-{{- $workconf = promptBool "work config" -}}
-{{- if $minimal -}}
-{{- $secrets = false -}}
-{{- else }}
-{{- $secrets = promptBool "secrets" -}}
-{{- end }}
-{{- $name := promptString "full name" -}}
-{{- $email := promptString "personal email" -}}
-{{- end }}
 
 encryption: gpg
 gpg:
@@ -57,7 +61,6 @@ data:
   name: {{ $name }}
   email: {{ $email }}
   gpg_keyid: {{ $gpg_keyid }}
-  github_user: {{ $github_user }}
   workconf: {{ $workconf }}
 {{- if $secrets }}
   bitwarden:

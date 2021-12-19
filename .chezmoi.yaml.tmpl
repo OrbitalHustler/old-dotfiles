@@ -58,8 +58,8 @@ data:
   secrets: {{ $secrets }}
   headless: {{ $headless }}
   minimal: {{ $minimal }}
-  name: {{ $name }}
-  email: {{ $email }}
+  name: "{{ $name }}"
+  email: "{{ $email }}"
   gpg_keyid: {{ $gpg_keyid }}
   workconf: {{ $workconf }}
 {{- if $secrets }}

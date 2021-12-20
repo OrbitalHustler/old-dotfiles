@@ -11,6 +11,7 @@ fi
 
 . $DIR/../commonrc
 if [ -f "$HOME/.env-secrets.gpg" ]; then
+	gpg -qd "$HOME/.env-secrets.gpg" > /dev/null 2>&1 # Do it once out of subshell so user can type its password without input bugs
     if [[ ! -o interactive ]]; then
       . <(gpg -qd "$HOME/.env-secrets.gpg" > /dev/null 2>&1)
     else
@@ -47,3 +48,4 @@ zvm_after_init_commands+=("bindkey '^Z' fancy-ctrl-z")
 # if [[ -z "$TMUX" && -z "$INSIDE_EMACS" && -z "$EMACS" && -z "$VIM" ]]; then
 # 	  tmux -u attach || tmux -u
 # fi
+

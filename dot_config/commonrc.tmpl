@@ -1,10 +1,10 @@
 export ASDF_DIR="$HOME/.local/asdf"
 
-eval `keychain --agents gpg,ssh --eval --quiet`
 
 # My custom chezmoi env
 {{- if .secrets }}
 export CHEZMOI_SECRETS=1
+eval `keychain --agents gpg,ssh --eval --quiet`
 {{- end}}
 {{- if .name }}
 export CHEZMOI_NAME="{{.name}}"

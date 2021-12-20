@@ -15,6 +15,7 @@ graphviz
 guile-3.0
 imagemagick
 isync
+keychain
 libbz2-dev
 libffi-dev
 libgccjit0

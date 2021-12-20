@@ -165,7 +165,7 @@ Finish later: [[https://ananthakumaran.in/monky/index.html][documentation]]
   :config
   (setq! +org-roam-open-buffer-on-find-file nil
          org-roam-file-exclude-regexp "\\.stfolder"
-         org-roam-file-exclude-regexp "\\.stversions")
+         org-roam-file-exclude-regexp "\\.stversions"))
 #+end_src
 ** deft
 #+begin_src emacs-lisp

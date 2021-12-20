@@ -9,7 +9,8 @@ if [[ -d "$HOME/.gnupg" ]]; then
     ansi --green "Changing GnuPG permissions.."
 
     chown -R "$(whoami)" ~/.gnupg/
-    # Also correct the permissions and access rights on the directory
-    chmod 700 ~/.gnupg/*
-    chmod 700 ~/.gnupg
+
+    mkdir -pv ~/.gnupg/private-keys-v1.d
+    chmod 700 ~/.gnupg ~/.gnupg/private-keys-v1.d
+    chmod 600 `find ~/.gnupg -type f`
 fi

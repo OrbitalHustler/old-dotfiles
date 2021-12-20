@@ -6,10 +6,12 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 . "$DIR/ansi"
 
 ansi --yellow "Ensuring required directories exist.."
-mkdir -pv $HOME/workspace
+mkdir -pv "$HOME/workspace"
 
-mkdir -pv $HOME/org/roam
+mkdir -pv "$HOME/org/roam"
 
-mkdir -pv $HOME/.local/share/applications
-mkdir -pv $HOME/.local/tmux/plugins
-mkdir -pv $HOME/.vim/autoload
+mkdir -pv "$HOME/.local/share/applications"
+mkdir -pv "$HOME/.local/tmux/plugins"
+mkdir -pv "$HOME/.vim/autoload"
+
+mkdir -pv "$HOME/.ssh/config.d"

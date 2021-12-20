@@ -1,0 +1,6 @@
+Include config.d/*
+
+Host *
+    AddKeysToAgent yes
+    IdentitiesOnly yes
+    ForwardAgent yes

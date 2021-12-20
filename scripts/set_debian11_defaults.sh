@@ -19,6 +19,13 @@ fi
 # ask sudo upfront
 sudo -v
 
+is_using_systemd=false
+pidof systemd && is_using_systemd=true
+
+if [ "$is_using_systemd" == true ]; then
+    sudo loginctl enable-linger "$USER"
+fi
+
 # ansi --green "Updating pacman.conf.."
 # sudo sed -i '/Color$/s/^#//g' /etc/pacman.conf
 # sudo sed -i '/TotalDownload$/s/^#//g' /etc/pacman.conf

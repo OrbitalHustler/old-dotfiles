@@ -3,4 +3,4 @@ Include config.d/*
 Host *
     AddKeysToAgent yes
     # IdentitiesOnly yes
-    ForwardAgent yes
+    # ForwardAgent yes # Enable this on a per server basis

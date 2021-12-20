@@ -3,9 +3,9 @@
 {{- $secrets := false -}}
 {{- $default_user := false -}}
 {{- $workconf := false -}}
-{{- $name := false -}}
-{{- $email := false -}}
-{{- $github_user := false -}}
+{{- $name := "" -}}
+{{- $email := "" -}}
+{{- $github_user := "" -}}
 
 {{- if (env "CHEZMOI_SECRETS") }}
 {{- $secrets = true }}
@@ -23,9 +23,9 @@
 {{- $email = promptString "email" }}
 {{- end }}
 {{- if (env "CHEZMOI_GITHUB_USER") }}
-{{- $email = (env "CHEZMOI_GITHUB_USER") }}
+{{- $github_user = (env "CHEZMOI_GITHUB_USER") }}
 {{- else }}
-{{- $email = promptString "github user" }}
+{{- $github_user = promptString "github user" }}
 {{- end }}
 {{- if (env "CHEZMOI_HEADLESS") }}
 {{- $headless = true }}

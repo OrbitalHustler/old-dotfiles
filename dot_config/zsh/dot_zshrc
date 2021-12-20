@@ -9,15 +9,6 @@ if [[ ! "$TERM" == "dumb" ]]; then
     fi
 fi
 
-. $DIR/../commonrc
-if [ -f "$HOME/.env-secrets.gpg" ]; then
-	gpg -qd "$HOME/.env-secrets.gpg" > /dev/null 2>&1 # Do it once out of subshell so user can type its password without input bugs
-    if [[ ! -o interactive ]]; then
-      . <(gpg -qd "$HOME/.env-secrets.gpg" > /dev/null 2>&1)
-    else
-      . <(gpg -qd "$HOME/.env-secrets.gpg")
-    fi
-fi
 . $DIR/exports.zsh
 
 . $DIR/zinit.zsh

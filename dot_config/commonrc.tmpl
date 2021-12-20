@@ -3,11 +3,10 @@ export ASDF_DIR="$HOME/.local/asdf"
 # My custom chezmoi env
 {{- if .secrets }}
 export CHEZMOI_SECRETS=1
-
 ## Use gpg key for ssh
 export GPG_TTY=$TTY
 export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-
+gpg-agent > /dev/null 2>&1 || gpg-agent --daemon > /dev/null 2>&1
 {{- end}}
 {{- if .name }}
 export CHEZMOI_NAME="{{.name}}"

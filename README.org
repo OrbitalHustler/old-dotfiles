@@ -30,5 +30,10 @@ podman rm deb11
 
 * Things to do
 
-** TODO Dont install python in asdf when MINIMAL is set
-** TODO Make scripts keep running when you dont have sudo
+** Dont install python in asdf when MINIMAL is set
+** Make scripts keep running when you dont have sudo
+** Generate .gitconfig file with user name and email
+** Setup distrib
+*** Debian 11 server
+disable root login
+disable ssh password login

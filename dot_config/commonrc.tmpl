@@ -15,6 +15,9 @@ export CHEZMOI_NAME="{{.name}}"
 {{- if .email }}
 export CHEZMOI_EMAIL="{{.email}}"
 {{- end}}
+{{- if .github_user }}
+export CHEZMOI_GITHUB_USER="{{.github_user}}"
+{{- end}}
 {{- if .headless }}
 export CHEZMOI_HEADLESS=1
 {{- end}}

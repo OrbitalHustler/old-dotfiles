@@ -5,6 +5,7 @@
 {{- $workconf := false -}}
 {{- $name := false -}}
 {{- $email := false -}}
+{{- $github_user := false -}}
 
 {{- if (env "CHEZMOI_SECRETS") }}
 {{- $secrets = true }}
@@ -20,6 +21,11 @@
 {{- $email = (env "CHEZMOI_EMAIL") }}
 {{- else }}
 {{- $email = promptString "email" }}
+{{- end }}
+{{- if (env "CHEZMOI_GITHUB_USER") }}
+{{- $email = (env "CHEZMOI_GITHUB_USER") }}
+{{- else }}
+{{- $email = promptString "github user" }}
 {{- end }}
 {{- if (env "CHEZMOI_HEADLESS") }}
 {{- $headless = true }}
@@ -60,6 +66,7 @@ data:
   minimal: {{ $minimal }}
   name: "{{ $name }}"
   email: "{{ $email }}"
+  github_user: "{{ $github_user }}"
   gpg_keyid: {{ $gpg_keyid }}
   workconf: {{ $workconf }}
 {{- if $secrets }}

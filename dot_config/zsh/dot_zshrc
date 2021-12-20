@@ -3,11 +3,20 @@ DIR=$ZDOTDIR
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-	  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+if [[ ! "$TERM" == "dumb" ]]; then
+    if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+	      source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    fi
 fi
 
 . $DIR/../commonrc
+if [ -f "$HOME/.env-secrets.gpg" ]; then
+    if [[ ! -o interactive ]]; then
+      . <(gpg -qd "$HOME/.env-secrets.gpg" > /dev/null 2>&1)
+    else
+      . <(gpg -qd "$HOME/.env-secrets.gpg")
+    fi
+fi
 . $DIR/exports.zsh
 
 . $DIR/zinit.zsh
@@ -25,7 +34,9 @@ fi
 [ -f ~/.localrc ] && source ~/.localrc
 
 # # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-. $DIR/p10k.zsh
+if [[ ! "$TERM" == "dumb" ]]; then
+    . $DIR/p10k.zsh
+fi
 
 # fzf and fancy-ctrl-z needs to be loaded after zsh-vi-mode
 # zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')

@@ -417,5 +417,14 @@ This is a workaround for[[https://github.com/hlissner/doom-emacs/issues/2991][ t
 (add-to-list 'auto-mode-alist '("\\.yaml.tmpl" . yaml-mode))
 #+end_src
 
+* Tramp
+#+begin_src emacs-lisp
+;; Tramp fails to recognize special prompts, we need to help it!
+;; https://www.bounga.org/tips/2017/11/30/fix-emacs-tramp-lag-and-timeout/
+;; add character ❯
+;; (setq! shell-prompt-pattern "^[^#$%>\n]*[#$%>❯] *")
+#+end_src
+
+*
 * Things to add when I have time & motivation
 [[https://list.orgmode.org/20200531212322.GF23478@volibear/t/][Solution for contact syncing/editing]]

@@ -26,10 +26,11 @@ fi
 
 #gpg-agent > /dev/null 2>&1 || gpg-agent --daemon > /dev/null 2>&1
 
-if [ -f "$HOME/.env-secrets.gpg" ]; then
-    if [[ ! -o interactive ]]; then
-      . <(gpg -qd "$HOME/.env-secrets.gpg" > /dev/null 2>&1)
-    else
-      . <(gpg -qd "$HOME/.env-secrets.gpg")
-    fi
-fi
+# export GPG_TTY=$TTY
+# if [ -f "$HOME/.env-secrets.gpg" ]; then
+#     if [[ ! -o interactive ]]; then
+#       . <(gpg -qd "$HOME/.env-secrets.gpg" > /dev/null 2>&1)
+#     else
+#       . <(gpg -qd "$HOME/.env-secrets.gpg")
+#     fi
+# fi

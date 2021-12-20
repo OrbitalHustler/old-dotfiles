@@ -98,5 +98,7 @@ zinit load zsh-users/zsh-syntax-highlighting # last
 zicompinit; zicdreplay
 
 # # # Theme
-zinit ice depth="1"
-zinit load romkatv/powerlevel10k
+if [[ ! "$TERM" == "dumb" ]]; then
+	zinit ice depth="1"
+	zinit load romkatv/powerlevel10k
+fi

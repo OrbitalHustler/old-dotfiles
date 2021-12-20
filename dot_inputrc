@@ -1,5 +1,3 @@
-set editing-mode vi
-set keymap vi
 set convert-meta on
 
 # for single press Tab results for when a partial or no completion is possible
@@ -18,5 +16,10 @@ set show-mode-in-prompt on
 set echo-control-characters off
 
 
+$if term=dumb
+$else
+set editing-mode vi
+set keymap vi
 "\C-p":history-search-backward
 "\C-n":history-search-forward
+$endif

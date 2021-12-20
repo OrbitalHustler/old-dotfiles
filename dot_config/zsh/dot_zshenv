@@ -24,7 +24,7 @@ if [[ ! -o interactive ]]; then
   export PATH="$PATH:$HOME/.local/asdf/shims"
 fi
 
-#gpg-agent > /dev/null 2>&1 || gpg-agent --daemon > /dev/null 2>&1
+gpg-agent > /dev/null 2>&1 || gpg-agent --daemon > /dev/null 2>&1
 
 # export GPG_TTY=$TTY
 # if [ -f "$HOME/.env-secrets.gpg" ]; then

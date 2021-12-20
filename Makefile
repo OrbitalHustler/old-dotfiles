@@ -128,11 +128,11 @@ chezmoi-init:
 
 chezmoi-apply:
 	@echo "Applying chezmoi.."
-	$(MAKE) ensure-dirs #Ensure that ~/.local/tmux/plugins exists for exemple, before downloading tpm
+	@$(MAKE) ensure-dirs #Ensure that ~/.local/tmux/plugins exists for exemple, before downloading tpm
 	$(CHEZMOI) apply --verbose --keep-going
 
 all:
-	$(MAKE) ensure-dirs
+	@$(MAKE) ensure-dirs
 	$(MAKE) ensure-deps
 	$(MAKE) start-services
 	$(MAKE) install-env
@@ -145,7 +145,7 @@ all:
 
 first:
 	$(MAKE_SECTION) Running first time setup
-	$(MAKE) ensure-dirs
+	@$(MAKE) ensure-dirs
 	$(MAKE) ensure-deps
 	$(MAKE) chezmoi-init
 	$(MAKE) chezmoi-apply

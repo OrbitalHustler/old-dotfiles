@@ -29,7 +29,7 @@ podman rm deb11
 #+end_src
 
 * Things to do
-
+** Fix copy in vim not going to clipboard
 ** Dont install python in asdf when MINIMAL is set
 ** Make scripts keep running when you dont have sudo
 ** Generate .gitconfig file with user name and email

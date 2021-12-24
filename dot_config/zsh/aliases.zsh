@@ -4,13 +4,14 @@ alias psg='ps aux | grep '
 alias _="sudo"
 alias c="clear"
 alias cm="chezmoi"
-alias cmcd="cd $HOME/.local/share/chezmoi"
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
+alias cmcd="z $HOME/.local/share/chezmoi"
+alias ...="z ../.."
+alias ....="z ../../.."
+alias .....="z ../../../.."
 # git commit quic
 alias gcq='git commit -m "update"'
 alias gcqp='git commit -m "update" && git push'
+alias cd='echo use z instead!'
 
 
 _pager="less"

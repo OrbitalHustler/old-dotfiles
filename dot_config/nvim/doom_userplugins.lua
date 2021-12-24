@@ -16,7 +16,11 @@ local M = {}
 
 M.source = debug.getinfo(1, "S").source:sub(2)
 
-M.plugins = {}
+M.plugins = {
+	{
+		'ojroques/vim-oscyank',
+	},
+}
 
 return M
 

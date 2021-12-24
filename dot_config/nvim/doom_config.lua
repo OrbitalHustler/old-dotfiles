@@ -79,7 +79,7 @@ M.config = {
     -- false : disables line wrapping
     -- true  : enables line wrapping
     -- @default = false
-    line_wrap = false,
+    line_wrap = true,
 
     -- Enable Show mode ( -- INSERT --, -- NORMAL --, -- VISUAL -- )
     -- false : disables show mode

@@ -7,7 +7,9 @@ fzf 0.28.0
 github-cli latest
 jq latest
 neovim 0.5.1
+nodejs latest
 python 3.9.7
+rclone latest
 ripgrep latest
 shellcheck latest
 zoxide latest

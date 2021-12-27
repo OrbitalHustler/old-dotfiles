@@ -29,6 +29,8 @@ podman rm deb11
 #+end_src
 
 * Things to do
+** CHEZMOI_DEV flag
+asdf install cmake
 ** Neovim
 *** TODO find how bind OSC-52 yanking keys
 [[https://www.reddit.com/r/vim/comments/k1ydpn/comment/gdt5yt5/?utm_source=reddit&utm_medium=web2x&context=3][From]]

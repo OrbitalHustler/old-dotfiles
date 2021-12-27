@@ -54,7 +54,7 @@ update-asdf:
 
 update-python:
 	$(PIP) install --upgrade pip wheel
-	$(PIP) install --upgrade pynvim pytest pylint flake8 black isort nose podman-compose
+	$(PIP) install --upgrade pynvim pytest pylint flake8 black isort nose podman-compose cmake-language-server
 
 update-chezmoi:
 	$(CHEZMOI) upgrade

@@ -35,6 +35,7 @@ make
 man-db
 markdown
 msmtp
+ninja-build
 pinentry-tty
 pkg-config
 podman

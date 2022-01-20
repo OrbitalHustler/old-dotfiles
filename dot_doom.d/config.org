@@ -135,6 +135,12 @@ Finish later: [[https://ananthakumaran.in/monky/index.html][documentation]]
 (use-package! org
   ;;:hook
   ;;(org-capture-prepare-finalize . org-id-get-create)
+  :config
+  (setq! +org-capture-todo-file "organizer.org.gpg")
+  (add-to-list 'org-agenda-files "~/org/organizer.org.gpg")
+  (add-to-list 'org-agenda-files "~/org/calendar.org.gpg")
+  (add-to-list 'org-agenda-files "~/org/calendar-inbox.org.gpg")
+  (add-to-list 'org-agenda-files "~/org/personal.org.gpg")
   :custom
   (org-src-tab-acts-natively t))
 ;; (org-id-link-to-org-use-id t))
@@ -155,7 +161,8 @@ Finish later: [[https://ananthakumaran.in/monky/index.html][documentation]]
 (setq! org-journal-date-prefix "#+TITLE: "
        org-journal-time-prefix "* "
        org-journal-date-format "%a, %d-%m-%Y"
-       org-journal-file-format "%d-%m-%Y.org")
+       org-journal-file-format "%d-%m-%Y.org"
+       org-journal-encrypt-journal t)
 #+end_src
 ** roam
 [[https://github.com/org-roam/org-roam/wiki/Hitchhiker's-Rough-Guide-to-Org-roam-V2][Hitchiker's rough guide to org roam V2]]
@@ -203,10 +210,10 @@ This is a workaround for[[https://github.com/hlissner/doom-emacs/issues/2991][ t
 (use-package! org-caldav
   :after org
   :init
-  (setq! org-caldav-url "https://cloud.bluechair.xyz/nextcloud/remote.php/dav/calendars/matt"
+  (setq! org-caldav-url "https://nextcloud.bluechair.xyz/remote.php/dav/calendars/matt"
          org-caldav-calendar-id "personal"
-         org-caldav-inbox (expand-file-name "calendar-inbox.org" org-directory)
-         org-caldav-files `(,(expand-file-name "calendar.org" org-directory)))
+         org-caldav-inbox (expand-file-name "calendar-inbox.org.gpg" org-directory)
+         org-caldav-files `(,(expand-file-name "calendar.org.gpg" org-directory)))
   :config
   (setq! org-icalendar-timezone "Europe/Paris"))
 #+end_src
@@ -385,28 +392,6 @@ This is a workaround for[[https://github.com/hlissner/doom-emacs/issues/2991][ t
   (run-with-idle-timer 1 t #'display-workspaces-in-minibuffer)
   (+workspace/display))
 #+end_src
-* mu4e
-#+begin_src emacs-lisp
-#+end_src
-* Languages
-** C/C++
-#+begin_src emacs-lisp
-;; (defun my-c-mode-common-hook ()
-;;   ;; my customizations for all of c-mode, c++-mode, objc-mode, java-mode
-;;   (c-set-offset 'substatement-open 0)
-;;   ;; other customizations can go here
-
-;;   (setq! c++-tab-always-indent t)
-;;   (setq! c-basic-offset 4)                  ;; Default is 2
-;;   (setq! c-indent-level 4)                  ;; Default is 2
-
-;;   (setq! tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60))
-;;   (setq! tab-width 4)
-;;   (setq! indent-tabs-mode t)  ; use spaces only if nil
-;;   )
-
-;; (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
-#+end_src
 * Azerty module update
 #+begin_src emacs-lisp
 ;; TODO azerty module: bind é and è instead of [ and ] in org-agenda keymap
@@ -419,7 +404,6 @@ This is a workaround for[[https://github.com/hlissner/doom-emacs/issues/2991][ t
 #+begin_src emacs-lisp
 (add-to-list 'auto-mode-alist '("\\.yaml.tmpl" . yaml-mode))
 #+end_src
-
 * Tramp
 #+begin_src emacs-lisp
 ;; Tramp fails to recognize special prompts, we need to help it!
@@ -427,6 +411,15 @@ This is a workaround for[[https://github.com/hlissner/doom-emacs/issues/2991][ t
 ;; add character ❯
 ;; (setq! shell-prompt-pattern "^[^#$%>\n]*[#$%>❯] *")
 #+end_src
-
+* GPG
+#+begin_src emacs-lisp
+(setq! epa-file-encrypt-to (getenv "CHEZMOI_EMAIL"))
+#+end_src
 * Things to add when I have time & motivation
 [[https://list.orgmode.org/20200531212322.GF23478@volibear/t/][Solution for contact syncing/editing]]
+
+* TESTING
+#+begin_src emacs-lisp
+(setq-hook! 'c-mode-common-hook
+  +format-with-lsp nil)
+#+end_src

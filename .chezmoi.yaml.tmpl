@@ -10,17 +10,17 @@
 {{- if (env "CHEZMOI_SECRETS") }}
 {{- $secrets = true }}
 {{- else }}
-{{- $secrets = false }}
+{{- $secrets = promptBool "Use secrets (ssh/gpg)" }}
 {{- end }}
 {{- if (env "CHEZMOI_NAME") }}
 {{- $name = (env "CHEZMOI_NAME") }}
 {{- else }}
-{{- $name = promptString "name"}}
+{{- $name = promptString "Name"}}
 {{- end }}
 {{- if (env "CHEZMOI_EMAIL") }}
 {{- $email = (env "CHEZMOI_EMAIL") }}
 {{- else }}
-{{- $email = promptString "email" }}
+{{- $email = promptString "Email" }}
 {{- end }}
 {{- if (env "CHEZMOI_GITHUB_USER") }}
 {{- $github_user = (env "CHEZMOI_GITHUB_USER") }}

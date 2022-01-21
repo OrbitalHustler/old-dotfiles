@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [ -f ~/.localrc ]; then
+   cat ~/.localrc
+else
+    echo "#CHEZMOI_USE_ASDF_PYTHON=1"
+    echo "#CHEZMOI_USE_ASDF_CMAKE=1"
+fi

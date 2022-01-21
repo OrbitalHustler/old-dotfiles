@@ -29,8 +29,6 @@ podman rm deb11
 #+end_src
 
 * Things to do
-** CHEZMOI_DEV flag
-asdf install cmake
 ** Neovim
 *** TODO find how bind OSC-52 yanking keys
 [[https://www.reddit.com/r/vim/comments/k1ydpn/comment/gdt5yt5/?utm_source=reddit&utm_medium=web2x&context=3][From]]
@@ -40,7 +38,6 @@ nnoremap <Leader>Y  v$:OSCYank<CR>
 nnoremap <Leader>yy V:OSCYank<CR>
 #+end_src
 ** Fix copy in vim not going to clipboard
-** Dont install python in asdf when MINIMAL is set
 ** Make scripts keep running when you dont have sudo
 ** Generate .gitconfig file with user name and email
 ** Setup distrib

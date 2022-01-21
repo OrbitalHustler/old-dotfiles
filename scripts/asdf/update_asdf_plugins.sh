@@ -85,16 +85,32 @@ function asdf_install_package_version_if_needed() {
     fi
 }
 
+function is_package_used() {
+    package=$1
+    if [[ $package == "python" && $CHEZMOI_USE_ASDF_PYTHON != 1 ]]; then
+        false
+        return
+    fi
+    if [[ $package == "cmake" && $CHEZMOI_USE_ASDF_CMAKE != 1 ]]; then
+        false
+        return
+    fi
+    true
+    return
+}
+
 while read -r line; do
     package=$(echo "$line" | awk '{print $1}')
     version=$(echo "$line" | awk '{print $2}')
     repo_url=$(echo "$line" | awk '{print $3}')
-    echo "$(ansi --yellow ====checking $package====)"
-    asdf_install_or_update_plugin $package
-    asdf_install_package_version_if_needed $package $version
-    asdf global $package $version
-    echo "$(ansi --yellow ====$package done====)"
-    echo ""
+    if is_package_used $package; then
+        echo "$(ansi --yellow ====checking $package====)"
+        asdf_install_or_update_plugin $package
+        asdf_install_package_version_if_needed $package $version
+        asdf global $package $version
+        echo "$(ansi --yellow ====$package done====)"
+        echo ""
+    fi
 done < "$PACKAGES"
 
 echo "$(ansi --yellow Checking for missing zsh hook files...)"

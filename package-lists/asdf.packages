@@ -1,12 +1,13 @@
 bat latest
 bitwarden latest
+cmake latest
 direnv latest
 exa latest
 fd latest
-fzf 0.28.0
+fzf latest
 github-cli latest
 jq latest
-neovim 0.5.1
+neovim latest
 nodejs latest
 python 3.9.7
 rclone latest

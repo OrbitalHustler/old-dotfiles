@@ -66,7 +66,9 @@ zinit ice wait lucid
 zinit load zsh-users/zsh-completions
 
 # Do not turbo mode (ice wait) these packages
-zinit load jeffreytse/zsh-vi-mode # problems with fzf Ctrl+R, Ctrl+Z, Ctrl+T bindings if turbo
+if [ ! -n "${INSIDE_EMACS+1}" ]; then
+    zinit load jeffreytse/zsh-vi-mode # problems with fzf Ctrl+R, Ctrl+Z, Ctrl+T bindings if turbo
+fi
 zinit ice svn pick"tmux.plugin.zsh"
 zinit snippet OMZ::plugins/tmux
 zinit load Aloxaf/fzf-tab

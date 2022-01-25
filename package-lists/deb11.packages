@@ -26,6 +26,7 @@ libreadline-dev
 librsvg2-2
 libsqlite3-dev
 libssl-dev
+libvterm-dev
 locate
 lsb-release
 maildir-utils

@@ -44,7 +44,7 @@
 * Bug fixes
 #+begin_src emacs-lisp
 ;; fixes half-width debug breakpoints icons
-(setq-default left-fringe-width 10)
+;; (setq-default left-fringe-width 10)
 
 ;; evil-ex-registers doesn't exist, binding it to evil-paste-from-register
 (after! evil
@@ -286,55 +286,41 @@ This is a workaround for[[https://github.com/hlissner/doom-emacs/issues/2991][ t
 #+end_src
 * dap
 #+begin_src emacs-lisp
-(when (featurep! :tools debugger +lsp)
-  (remove-hook 'dap-ui-mode-hook #'dap-ui-controls-mode))
+;; (when (featurep! :tools debugger +lsp)
+;;   (remove-hook 'dap-ui-mode-hook #'dap-ui-controls-mode))
 
 (map! :leader
+      :after cc-mode
+      :map (c-mode-map c++-mode-map)
       (:when (featurep! :tools debugger +lsp)
        (:prefix-map ("o" . "open")
-        :desc "Debugger" "d" #'dap-debug )))
+        :desc "Debugger" "d" #'dap-hydra)))
 
-(after! dap-mode
-  (require 'dap-lldb)
-  (require 'dap-cpptools)
-  (setq! dap-print-io nil
-         dap-auto-configure-features '(locals breakpoints expressions tooltip))
-  (dap-register-debug-template
-   "EAP debug"
-   (list :type "cppdbg"
-         :request "launch"
-         :name "EAP debug"
-         :MIMode "gdb"
-         :program "${workspaceFolder}/build/src/EasiPlayer/bin/Debian-8.3-x86_64/EasiPlayer"
-         :cwd "${workspaceFolder}"))
-  (dap-register-debug-template
-   "EAD debug"
-   (list :type "cppdbg"
-         :request "launch"
-         :name "EAD debug"
-         :MIMode "gdb"
-         :program "${workspaceFolder}/build/EasiNetDesigner"
-         :cwd "${workspaceFolder}"))
+(map! :localleader
+      :after cc-mode
+      :map (c-mode-map c++-mode-map)
+      (:when (featurep! :tools debugger +lsp)
+       (:prefix-map ("d" . "debug")
+        :desc "dap-debug" "d" #'dap-debug
+        :desc "dap-debug-last" "l" #'dap-debug-last
+        :desc "dap-debug-recent" "r" #'dap-debug-recent
+        :desc "dap-debug-edit-template" "e" #'dap-debug-edit-template)
+       (:prefix-map ("b" . "breakpoints")
+        :desc "add breakpoint" "a" #'dap-breakpoint-add
+        :desc "toggle breakpoint" "t" #'dap-breakpoint-toggle
+        :desc "delete breakpoint" "d" #'dap-breakpoint-delete
+        :desc "delete all breakpoints" "D" #'dap-breakpoint-delete-all
+        :desc "condition" "c" #'dap-breakpoint-condition
+        :desc "hit count" "h" #'dap-breakpoint-hit-condition
+        :desc "log message" "l" #'dap-breakpoint-log-message
+        )))
 
-  (dap-register-debug-template
-   "EADImport debug"
-   (list :type "cppdbg"
-         :request "launch"
-         :name "EADImport debug"
-         :MIMode "gdb"
-         :program "${workspaceFolder}/build/EADImport"
-         :cwd "${workspaceFolder}"))
-  (dap-register-debug-template
-   "EADExport debug"
-   (list :type "cppdbg"
-         :request "launch"
-         :name "EADExport debug"
-         :MIMode "gdb"
-         :program "${workspaceFolder}/build/EADExport"
-         :cwd "${workspaceFolder}"))
-  (dap-register-debug-template
-   "LLDB cpp_project"
-   (list :type "lldb-vscode" :cwd "${workspaceFolder}" :request "launch" :program "${workspaceFolder}/build/ninja/hello.exe" :name "LLDB cpp_project")))
+;; "refresh" buffer when entering/leaving dap-mode, to show breakpoints again: https://github.com/emacs-lsp/dap-mode/issues/374#issuecomment-944985618
+;; Works when entering but not when leaving. something else is going on when leaving
+;; (add-hook! +dap-running-session-mode ((lambda ()
+;;                        (set-window-buffer nil (current-buffer)))))
+(add-hook! '+dap-running-session-mode-hook ((lambda ()
+                       (set-window-buffer nil (current-buffer)))))
 #+end_src
 * tmux
 #+begin_src emacs-lisp

@@ -296,9 +296,14 @@ This is a workaround for[[https://github.com/hlissner/doom-emacs/issues/2991][ t
        (:prefix-map ("o" . "open")
         :desc "Debugger" "d" #'dap-hydra)))
 
+(defun refresh-window-buffer-for-breakpoints ()
+  (interactive)
+  (set-window-buffer nil (current-buffer)))
+
 (map! :localleader
       :after cc-mode
       :map (c-mode-map c++-mode-map)
+      :desc "refresh display" "g" #'refresh-window-buffer-for-breakpoints
       (:when (featurep! :tools debugger +lsp)
        (:prefix-map ("d" . "debug")
         :desc "dap-debug" "d" #'dap-debug
@@ -320,7 +325,7 @@ This is a workaround for[[https://github.com/hlissner/doom-emacs/issues/2991][ t
 ;; (add-hook! +dap-running-session-mode ((lambda ()
 ;;                        (set-window-buffer nil (current-buffer)))))
 (add-hook! '+dap-running-session-mode-hook ((lambda ()
-                       (set-window-buffer nil (current-buffer)))))
+                                              (set-window-buffer nil (current-buffer)))))
 #+end_src
 * tmux
 #+begin_src emacs-lisp

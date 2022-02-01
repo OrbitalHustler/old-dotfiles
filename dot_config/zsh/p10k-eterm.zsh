@@ -1,1 +1,0 @@
-typeset -g POWERLEVEL9K_PROMPT_ADD_NEWLINE=false

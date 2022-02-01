@@ -30,7 +30,7 @@ if [[ ! "$TERM" == "dumb" ]]; then
     . $DIR/p10k.zsh
 fi
 if [[ "$TERM" == "eterm-color" ]]; then
-    . $DIR/p10k-eterm.zsh
+    export POWERLEVEL9K_PROMPT_ADD_NEWLINE=false
 fi
 
 # fzf and fancy-ctrl-z needs to be loaded after zsh-vi-mode

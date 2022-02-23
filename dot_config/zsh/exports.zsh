@@ -3,7 +3,7 @@
 # path has unique values
 typeset -U PATH
 path+=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-path=("$HOME/.local/bin:$HOME/.bin:$HOME/.mybin" $path)
+path=("$HOME/.local/bin" "$HOME/.bin" "$HOME/.mybin" $path)
 # setup custom completion path
 typeset -U FPATH
 fpath=("$HOME/.config/zsh/completions" $fpath)

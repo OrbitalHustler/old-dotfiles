@@ -26,7 +26,7 @@ zinit snippet OMZ::plugins/colorize
 zinit ice wait lucid
 zinit snippet OMZ::plugins/command-not-found
 zinit ice wait lucid
-zinit snippet OMZ::plugins/copydir
+zinit snippet OMZ::plugins/copypath
 zinit ice wait lucid
 zinit snippet OMZ::plugins/copyfile
 zinit ice wait lucid

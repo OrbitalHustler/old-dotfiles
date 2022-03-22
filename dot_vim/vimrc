@@ -121,13 +121,7 @@ hi User3 ctermfg=171 ctermbg=234
 hi User4 ctermfg=70 ctermbg=234
 hi User5 ctermfg=226 ctermbg=234
 
-" Gitgutter in statusline
-function! GitStatus()
 
-    return join(filter(map(['A','M','D'], {i,v -> v.': '.GitGutterGetHunkSummary()[i]}), 'v:val[-1:]'), ' ')
-endfunction
-
-set statusline+=%{GitStatus()}
 set statusline=
 set statusline +=%1*\ %n\ %*            "buffer number
 set statusline +=%5*%{&ff}%*            "file format
@@ -136,8 +130,6 @@ set statusline +=%4*\ %<%F%*            "full path
 set statusline +=%2*%m%*                "modified flag
 
 set statusline +=%1*\ \|%{&fo}\|        "display format-options
-set statusline +=%{FugitiveStatusline()} " git branch
-set statusline+=%{GitStatus()}
 set statusline +=%1*%=%5l%*             "current line
 set statusline +=%2*/%L%*               "total lines
 set statusline +=%1*%4v\ %*             "virtual column number
@@ -163,27 +155,6 @@ noremap <Right> <NOP>
 " plugs
 "
 
-" neomake
-let g:neomake_open_list = 2 " open list automatically
-" enable linters
-silent! call neomake#configure#automake('nrwi', 500)
-
-augroup my_neomake_qf
-    autocmd!
-    autocmd QuitPre * if &filetype !=# 'qf' | lclose | endif
-augroup END
-
-
-let g:neomake_python_enabled_makers = ['mypy', 'flake8']
-augroup my_custom_maker
-    au!
-    au Filetype *.py let b:neomake_python_enabled_makers = ['mypy']
-augroup END
-
-"" vim-gitgutter
-set updatetime=250                  " . The delay is governed by vim's updatetime option
-let g:gitgutter_highlight_lines = 0 " highlight line
-
 "" incsearch.vim
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
@@ -195,24 +166,6 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
-
-
-
-"" vim-markdown
-let g:vim_markdown_folding_disabled = 1 " Disable folding
-
-
-" Allow for TOC window to auto-fit when it's possible to it to shrink
-let g:vim_markdown_toc_autofit = 1
-
-
-" fenced code block
-let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'python=py', 'c=c']
-
-" used as $x^2$, $$x^2$$, escapable as \$x\$ and \$\$x\$\$
-let g:vim_markdown_math = 1
-
-
 
 "" Rainbow Parentheses
 let g:rainbow_active = 1
